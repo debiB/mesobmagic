@@ -1,0 +1,75 @@
+@import url('https://fonts.googleapis.com/css2?family=Encode+Sans+Semi+Condensed:wght@900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Encode+Sans+Semi+Condensed:wght@600;900&display=swap');
+*{
+  padding:0;
+  margin: 0; 
+
+}
+.main_container{
+overflow: hidden;
+}
+.upnavl, .ls, .signl, #lsup{
+  font-family: "Encode Sans Semi Condensed", sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  color: #FF8303;
+  text-decoration: none;
+}
+.upnavl{
+  width:100%;
+}
+.dicover_n{
+  font-family: "Encode Sans Semi Condensed", sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  color: white;
+  padding-right:100px;
+  padding-left:100px;
+  padding-top:20px;
+  padding-bottom:20px;
+  text-decoration: none;
+  
+} 
+.lowernav{
+  display: flex;
+  background-color: #DD7230;
+  padding: 10px;
+  justify-content:space-between;
+  justify-content: flex-end; /* center horizontally */
+  align-items: center;
+  
+}
+
+header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 7px 8%;
+ 
+}
+.logo{
+  cursor: pointer;
+}
+.upnavl, #lsup{
+  list-style: none;
+}
+.upnavl li, #lsup li{
+  display: inline-block;
+  padding: 0px 20px;
+}
+#lsup a{
+  padding: 5px;
+}
+.upnavl li a{
+  transition: all 0.3s ease 0s;
+}
+.upnavl li a:hover{
+ color: #FF8303;
+ background-color: white;
+}
+#lsup:hover li a:hover{
+  color:white;
+  background-color: #FF8303;
+  border-radius: 10px;
+}
+
