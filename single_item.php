@@ -5,13 +5,6 @@ $data = fetchSingleItem($recipe, $conn);
 ?>
 
 <body>
-    <!-- <style>
-    .single-item-author {
-        font-weight:100;
-        font-size: 20px;
-        text-emphasis-color:grey;
-    }
-</style> -->
 
     <div class="top-single-item">
         <h1 class="single-item-title"><?php echo $data["recipe_name"] ?> <small class="single-item-author"> by <?php echo "author"; ?></small></h1>
