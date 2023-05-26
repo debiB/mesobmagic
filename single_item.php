@@ -1,15 +1,17 @@
 <?php
 include "filterRecepie.php";
+include "inc/header.php";
 $recipe = intval($_REQUEST['recipe']);
 $data = fetchSingleItem($recipe, $conn);
 ?>
-
+<link rel="stylesheet" href="styles/single-item.css">
 <body>
 
     <div class="top-single-item">
-        <h1 class="single-item-title"><?php echo $data["recipe_name"] ?> <small class="single-item-author"> by <?php echo "author"; ?></small></h1>
+        <div class= "top-title">
+        <h1 class="single-item-title"><?php echo "Ethiopian Kitfo" ?> </h1><small class="single-item-author"> by <?php echo "author"; ?></small></div>
         <div class="single-item-img">
-            <img src="<?php echo $data["image_url"] ?>" alt="<?php echo $data["recipe_name"] ?>" width="600px" , height="400px">
+            <img src="<?php echo "https://www.alphafoodie.com/wp-content/uploads/2023/01/Falafel-square.jpeg"?>" alt="<?php echo $data["recipe_name"] ?>" width="600px" , height="400px">
             <div class="single-item-rating">
                 <span> <?php echo $data["avg"]; ?> ( <?php echo $data["count"] ?>) reviews.</span>
             </div>
@@ -72,5 +74,5 @@ $data = fetchSingleItem($recipe, $conn);
         <div class="rate-me"> Care to rate this Recpie?</div>
 
     </div>
-
 </body>
+<?php include "inc/footer.php"; ?>

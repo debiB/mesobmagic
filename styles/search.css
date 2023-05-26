@@ -16,7 +16,7 @@ body{
     font-weight: 600;
     padding:30px;
 }
-.container{
+.container, form{
     align-items: center;
     justify-content: center;
 
@@ -41,7 +41,7 @@ body{
   .search-container button[type="submit"] {
     border: none;
     background-color: transparent;
-    background-image: url("search_button-removebg-preview.png");
+    background-image: url("../images/search_button-removebg-preview.png");
     background-repeat: no-repeat;
     background-size: contain;
     width: 30px;
@@ -57,7 +57,6 @@ body{
   }
   .card-wrapper {
     display: flex;
-    grid-template-columns: repeat(3, 1fr);
     grid-gap: 30px;
     width: 100%;
     width:300px;
@@ -70,22 +69,26 @@ body{
   }
   .card-wrapper1{
     display: flex;
-    grid-template-columns: repeat(3, 1fr);
-    grid-gap: 30px;
-    width: 100%;
-    width:300px;
-    margin-left: 20%;
-    margin-right: 50%;
-    padding:0; 
+    flex-wrap:wrap;
+    grid-gap: 40px;
+
+    width:80vw;
+    margin:auto;
+    padding:20px; 
     border-radius: 30px;
     box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+    font-family: encoding sans;
+    padding-right: 20px;
+    justify-content: center;
+
+
   }
   .card {
     display: grid;
     position: relative;
-    min-width:100%;
-    width: 300px;
-    height: 300px;
+    /* min-width:100%; */
+    width: 20%;
+    height: 20%;
     box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
     padding:0;
   }
@@ -147,7 +150,58 @@ body{
     padding:0;
     margin: 0;
   }
+
+  .r_name{
+      color:black;
+      font-weight: 300;
+      text-decoration: none;
+
+  }
+
+  .r_name:hover{
+    color:orange;
+    text-decoration: none;
+
+}
   
+.r_name:active{
+  color: orange;
+}
+.rating-number{
+  font-size: 15px;
+  color: grey;
+  float: right;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  margin-right: 5px;
+}
+.ratings-stars{
+  display: flex;
+  align-items:center;
+  /* justify-content: space-between; */
+
+
+}
+
+.card a {
+  text-decoration: none;
+}
+
+form{
+
+  display: flex;
+  /* width:auto;
+  height: auto; */
+  
+}
+
+.search-info{
+  font-size: 20px;
+  display: block;
+  font-family: encoded sans;
+  text-align: center;
+  margin-bottom: 20px;
+  margin-top: -40px;
+}
 
   
   
