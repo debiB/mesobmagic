@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Recipe Form</title>
+  <link rel="stylesheet" href="..\css\post.css">
+  <script src="https://apis.google.com/js/api.js"></script>
+</head>
+<body>
+  <object data="nav.html" id="imported-content" type="text/html"></object>
+  <div class="main_container">
+    <h1>+ Add a recipie</h1>
+    <hr class = "separator_line" style="color: white; margin:5%;">
+    <form id="recipeForm" method="post">
+      <div>
+        <label for="authorName">Author's Name:</label>
+        <input type="text" id="authorName" name="authorName">
+        <span class="error" id="authorNameError"></span>
+      </div>
+      <div>
+        <label for="recipeName">Recipe Name:</label>
+        <input type="text" id="recipeName" name="recipeName">
+        <span class="error" id="recipeNameError"></span>
+      </div>
+      <div>
+        <label>Photo:</label>
+        <div class="photo_container">
+          <label for="photo" id="file-upload-label">Choose a file</label>
+          <input type="file" id="photo" name="photo">
+          <span class="upload-status" style="padding: 1vh;">No file selected</span>
+        </div>
+        <span class="error" id="photoError" style="display: block"></span>
+      </div>
+      
+      <div>
+        <label class = "ing">Ingredients:</label>
+        <div class ="directions" id = "ing_direction">Enter one ingredient per line. Include the quantity (i.e. cups, tablespoons) and any special preparation (i.e. sifted, softened, chopped). </div>
+        <ol id="ingredientsList">
+          <li>
+            <input type="text" name="ingredient[]">
+            <button type="button" class="removeIngredient">X</button>
+          </li>
+        </ol>
+        <button type="button" id="addIngredient">Add Ingredient</button>
+        <span class="error" id="ingredientsError"></span>
+      </div>
+      <div>
+        <label for = "desc">Description:</label>
+        <div class="directions" id="desc_directions">Share a story behind your recipe and what makes it special.</div>
+        <textarea id="desc" rows="5" col="5" placeholder="Describe your recpie"></textarea>
+        <span class="error" id="desceError"></span>
+      </div>
+      <div>
+        <label for="description">Instruction:</label>
+        <div class ="directions">Explain how to make your recipe, including oven temperatures, baking or cooking times, and pan sizes, etc.</div>
+        <br>
+        <div id="stepsContainer">
+          <div class="step-container">
+            <label for="description">Step 1</label>
+            <div class="steps">
+              <textarea id="description" name="step[]" placeholder="Enter step description"></textarea>
+              <button type="button" class="removeStep">X</button>
+            </div>
+          </div>
+        </div>
+        <button type="button" id="addStep">Add Step</button>
+        <span class="error" id="descriptionError"></span>
+        
+      <div>
+        <label for="prepTime">Preparation Time:</label>
+        <input type="number" id="prepTime" name="prepTime" min = "1" oninput="calculateSum()">
+        <span class="error" id="prepTimeError"></span>
+      </div>
+      <div>
+        <label for="cookTime">Cook Time:</label>
+        <input type="number" id="cookTime" name="cookTime" min="1" oninput="calculateSum()">
+        <span class="error" id="cookTimeError"></span>
+      </div>
+      <div class ="calc">
+        <p class = "total_time">Total time:</p>
+        <p id="result"></p>
+      </div>
+      <div>
+        <label for="cuisine">Cuisine Type:</label>
+        <select id="cuisine" name="cuisine">
+          <option value="">Select Cuisine</option>
+          <option value="italian">Italian</option>
+          <option value="indian">Indian</option>
+          <option value="chinese">Chinese</option>
+          <!-- Add more cuisine options as needed -->
+        </select>
+        <span class="error" id="cuisineError"></span>
+      </div>
+      <div>
+        <label for="difficulty">Difficulty:</label>
+        <select id="difficulty" name="difficulty">
+          <option value="">Select Difficulty</option>
+          <option value="easy">Easy</option>
+          <option value="medium">Medium</option>
+          <option value="hard">Hard</option>
+        </select>
+        <span class="error" id="difficultyError"></span>
+      </div>
+      <button type="submit">Submit</button>
+    </form>
+    
+  </div>
+</div>
+<script src="../js/post.js"></script>
+<object data="footer.html" id="footer" type="text/html"></object> 
+</body>
+</html>
