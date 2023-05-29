@@ -1,23 +1,25 @@
 <?php
-include 'inc/config/dbconn.php';
+include '/opt/lampp/htdocs/mesobmagic/inc/config/dbconn.php';
 
 $fetchByIngredient =  function($ing, $conn){
 
     $ans = array();
  
-    $filter_stmt = "SELECT `recepie`.`rid`, `recipe_name`, `image_url`, `author`, AVG(`rating`) as avg FROM `recepie` LEFT JOIN `ratings` ON `ratings`.`rid` = `recepie`.`rid`  WHERE `ingredients` LIKE '%{$ing}%' GROUP BY `ratings`.`rid`;";
+    $filter_stmt = "SELECT `recepie`.`rid`, `recipe_name`, `image_url`, `author`, AVG(`rating`) as rating FROM `recepie` LEFT JOIN `ratings` ON `ratings`.`rid` = `recepie`.`rid`  WHERE `ingredients` LIKE '% " . $ing . " %'GROUP BY `ratings`.`rid`;";
+
 
     $result = $conn->query($filter_stmt);
+    return $result;
 
-    if ($result->num_rows > 0) {
-      while($row = $result->fetch_assoc()) {
-        $ans[] = $row;
-      }
-      return $ans;
-    } else {
-      return [];
-    }
-    // $conn->close();
+    // if ($result->num_rows > 0) {
+    //   while($row = $result->fetch_assoc()) {
+    //     $ans[] = $row;
+    //   }
+    //   return $ans;
+    // } else {
+    //   return [];
+    // }
+    // mus etiam vel augue vestibulum rutrum rutrum neque aenean auctor gravida sem praesent
     
 };
 
@@ -27,16 +29,16 @@ $fetchByCuisineType = function($cus, $conn){
     $filter_stmt = "SELECT `recepie`.`rid`, `recipe_name`, `image_url`, `author`, AVG(`rating`) as rating FROM `recepie` LEFT JOIN `ratings` ON `ratings`.`rid` = `recepie`.`rid` WHERE `cuisine` = '{$cus}' GROUP BY `recepie`.`rid`;";
 
     $result = $conn->query($filter_stmt);
+    return $result;
 
-    if ($result->num_rows > 0) {
-      while($row = $result->fetch_assoc()) {
-        $ans[] = $row;
-      }
-      return $ans;
-    } else {
-      return [];
-    }
-    // $conn->close();
+    // if ($result->num_rows > 0) {
+    //   while($row = $result->fetch_assoc()) {
+    //     $ans[] = $row;
+    //   }
+    //   return $ans;
+    // } else {
+    //   return [];
+    // }
     
 };
 
@@ -47,14 +49,15 @@ $fetchByAuthor = function($author, $conn){
 
     $result = $conn->query($filter_stmt);
 
-    if ($result->num_rows > 0) {
-      while($row = $result->fetch_assoc()) {
-        $ans[] = $row;
-      }
-      return $ans;
-    } else {
-      return [];
-    }
+    return $result;
+    // if ($result->num_rows > 0) {
+    //   while($row = $result->fetch_assoc()) {
+    //     $ans[] = $row;
+    //   }
+    //   return $ans;
+    // } else {
+    //   return [];
+    // }
     // $conn->close();
     
 };
@@ -64,71 +67,59 @@ $fetchByPrepTime =  function($prept, $conn){
     $filter_stmt = "SELECT `recepie`.`rid`, `recipe_name`, `image_url`, `author`, AVG(`rating`) as rating FROM `recepie` LEFT JOIN `ratings` ON `ratings`.`rid` = `recepie`.`rid` WHERE `prep_time` <= {$prept} GROUP BY `recepie`.`rid`;";
 
     $result = $conn->query($filter_stmt);
+    return $result;
 
-    if ($result->num_rows > 0) {
-      while($row = $result->fetch_assoc()) {
-        $ans[] = $row;
-      }
-      return $ans;
-    } else {
-      return [];
-    }
-    // $conn->close();
+    // if ($result->num_rows > 0) {
+    //   while($row = $result->fetch_assoc()) {
+    //     $ans[] = $row;
+    //   }
+    //   return $ans;
+    // } else {
+    //   return [];
+    // }
     
 };
 $fetchByCookTime = function($cookt, $conn){
  
-    $ans = array();
     $filter_stmt = "SELECT `recepie`.`rid`, `recipe_name`, `image_url`, `author`, AVG(`rating`) as rating FROM `recepie` LEFT JOIN `ratings` ON `ratings`.`rid` = `recepie`.`rid` WHERE `cook_time` <= {$cookt} GROUP BY `recepie`.`rid`;";
 
     $result = $conn->query($filter_stmt);
+    return $result;
 
-    if ($result->num_rows > 0) {
-      while($row = $result->fetch_assoc()) {
-        $ans[] = $row;
-      }
-      return $ans;
-    } else {
-      return [];
-    }
-    // $conn->close();
+    // if ($result->num_rows > 0) {
+    //   while($row = $result->fetch_assoc()) {
+    //     $ans[] = $row;
+    //   }
+    //   return $ans;
+    // } else {
+    //   return [];
+    // }
     
 };
 $fetchByDifficulty = function($diff, $conn){
 
     $ans = array();
     $filter_stmt = "SELECT `recepie`.`rid`, `recipe_name`, `image_url`, `author`, AVG(`rating`) as rating FROM `recepie` LEFT JOIN `ratings` ON `ratings`.`rid` = `recepie`.`rid` WHERE `difficulty_level` = '{$diff}' GROUP BY `recepie`.`rid`;";
-
+    
     $result = $conn->query($filter_stmt);
+    return $result;
 
-    if ($result->num_rows > 0) {
-      while($row = $result->fetch_assoc()) {
-        $ans[] = $row;
-      }
-      return $ans;
-    } else {
-      return [];
-    }
-    // $conn->close();
+    // if ($result->num_rows > 0) {
+    //   while($row = $result->fetch_assoc()) {
+    //     $ans[] = $row;
+    //   }
+    //   return $ans;
+    // } else {
+    //   return [];
+    // }
     
 };
 
 $fetchByName = function($name, $conn){
-
     $ans = array();
-    $filter_stmt = "SELECT `recepie`.`rid`, `recipe_name`, `image_url`, `author`, AVG(`rating`) as rating FROM `recepie` LEFT JOIN `ratings` ON `ratings`.`rid` = `recepie`.`rid` WHERE `recipe_name` LIKE ' %{$name}% ' GROUP BY `recepie`.`rid`;";
-
+    $filter_stmt = "SELECT `recepie`.`rid`, `recipe_name`, `image_url`, `author`, AVG(`rating`) as rating FROM `recepie` LEFT JOIN `ratings` ON `ratings`.`rid` = `recepie`.`rid` WHERE `recipe_name` LIKE '% ". $name. " %'  OR `recipe_name` LIKE '%". $name. " %' OR `recipe_name` LIKE '% ". $name. "%' GROUP BY `recepie`.`rid`;";
     $result = $conn->query($filter_stmt);
-
-    if ($result->num_rows > 0) {
-      while($row = $result->fetch_assoc()) {
-        $ans[] = $row;
-      }
-      return $ans;
-    } else {
-      return [];
-    }
-    // $conn->close();
+    return $result;
     
 };
 

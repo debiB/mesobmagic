@@ -1,5 +1,10 @@
-<?php include "inc/header.php" ?>
-<?php include('/opt/lampp/htdocs/mesobmagic/filterRecepie.php');?>
+<?php include "/opt/lampp/htdocs/mesobmagic/inc/header.php" ?>
+<?php include('/opt/lampp/htdocs/mesobmagic/php/filterRecepie.php');?>
+<?php
+
+?>
+
+
 <div class="container">
   <label for="search" class="searchtxt">Search</label>
   <form action="<?php echo $_SERVER["PHP_SELF"];?>" method="get" id  = "cont">
@@ -11,18 +16,18 @@
   </div>  
   <label for="filter" class="searchtxt">Filter by</label>
   <select id="filter" class="filter" name="function">
-    <option value="name">Name</option>
-    <option value="cusine">Cusine</option>
-    <option value="ingredient">Ingredient</option>
-    <option value="prep_time">Preparation Time</option>
-    <option value="difficulty">Diffculty</option>
-    <option value="author">Author</option>
+    <option value="name"     >Name</option>
+    <option value="cusine"     >Cusine</option>
+    <option value="ingredient"  > Ingredient</option>
+    <option value="prep_time"    >Preparation Time</option>
+    <option value="difficulty"   > Diffculty</option>
+    <option value="author" >Author</option>
   </select>
   </form>
 </div>
 
-  <?php
 
+<?php
 
 $functions = [
   "name"=>$fetchByName,
@@ -30,9 +35,10 @@ $functions = [
   "prep_time"=>$fetchByPrepTime,
   "author"=>$fetchByAuthor,
   "ingredient"=>$fetchByIngredient,
-  "cusine"=>$fetchByCuisineType,
+  "cusine"=>$fetchByCuisineType
 
 ];
+
 
 $ans = array();
 
@@ -110,6 +116,6 @@ if ((isset($_GET['function']) && isset($_GET['input']))):
 
 </div>
 
-<script src= "scripts/filter.js">
+<script src= "../scripts/filter.js">
 </script>
-<?php include "inc/footer.php"; ?>
+<?php include "/opt/lampp/htdocs/mesobmagic/inc/footer.php"; ?>

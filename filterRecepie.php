@@ -5,7 +5,8 @@ $fetchByIngredient =  function($ing, $conn){
 
     $ans = array();
  
-    $filter_stmt = "SELECT `recepie`.`rid`, `recipe_name`, `image_url`, `author`, AVG(`rating`) as rating FROM `recepie` LEFT JOIN `ratings` ON `ratings`.`rid` = `recepie`.`rid`  WHERE `ingredients` LIKE '%{$ing}%' GROUP BY `ratings`.`rid`;";
+    $filter_stmt = "SELECT `recepie`.`rid`, `recipe_name`, `image_url`, `author`, AVG(`rating`) as rating FROM `recepie` LEFT JOIN `ratings` ON `ratings`.`rid` = `recepie`.`rid`  WHERE `ingredients` LIKE '% " . $ing . " %'GROUP BY `ratings`.`rid`;";
+
 
     $result = $conn->query($filter_stmt);
     return $result;
@@ -18,6 +19,7 @@ $fetchByIngredient =  function($ing, $conn){
     // } else {
     //   return [];
     // }
+    // mus etiam vel augue vestibulum rutrum rutrum neque aenean auctor gravida sem praesent
     
 };
 

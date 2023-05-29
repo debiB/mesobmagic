@@ -12,6 +12,9 @@ function handleDropdownChange(event) {
   function setPlaceHolder(ph){
     let inp = document.querySelector('.search-container');
     let field= document.getElementById('search');
+    let val = "";
+    if(ph!="difficulty")
+      val = field.value;
     let bttn = document.getElementById('search-btn');
     inp.removeChild(field);
     inp.removeChild(bttn);
@@ -29,7 +32,9 @@ function handleDropdownChange(event) {
     let textfield = document.createElement('input');
     textfield.setAttribute('type', 'text');
     textfield.setAttribute('id', 'search');
-    textfield.setAttribute('name', 'input')
+    textfield.setAttribute('name', 'input');
+    if(val)
+      textfield.value = val
     textfield.placeholder  = placeholders[ph];
     
     inp.appendChild(textfield);

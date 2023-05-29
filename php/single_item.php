@@ -1,8 +1,8 @@
 <?php
-include "filterRecepie.php";
-include "inc/header.php";
+include "/opt/lampp/htdocs/mesobmagic/php/filterRecepie.php";
+include "/opt/lampp/htdocs/mesobmagic/inc/header.php";
 $recipe = intval($_REQUEST['recipe']);
-$data = fetchSingleItem($recipe, $conn);
+$data = $fetchSingleItem($recipe, $conn);
 ?>
 <link rel="stylesheet" href="styles/single-item.css">
 <body>
@@ -27,7 +27,7 @@ $data = fetchSingleItem($recipe, $conn);
         <div class="single-item-section">
             <h2> Ingredients</h1>
                 <ul>
-                    <?php $ing_array  = explode(",", $data['description'], 10);
+                    <?php $ing_array  = explode(" ", $data['ingredients'], 10);
                     foreach ($ing_array as $ing_item) : ?>
                         <li> <?php echo join(" ", explode("_", $ing_item)) ?> </li>
                     <?php endforeach; ?>
@@ -75,4 +75,4 @@ $data = fetchSingleItem($recipe, $conn);
 
     </div>
 </body>
-<?php include "inc/footer.php"; ?>
+<?php include "/opt/lampp/htdocs/mesobmagic/inc/footer.php"; ?>
