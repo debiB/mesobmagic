@@ -109,31 +109,8 @@
         }
     };
 
-    // Assuming you have a database connection object called $conn
 
-$input = array(
-    
-    "rid" => 1, // Assuming the recipe ID you want to update is 1
-    "recepie_name" => "Updated Recipe Name",
-    "description" => "Updated recipe description",
-    "ingredient" => "Updated ingredient list",
-    "instruction" => "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Illum, illo ab voluptate autem labore saepe est? Libero accusamus nulla, tempora, nemo ipsum quas itaque similique perferendis delectus ab excepturi reprehenderit.",
-    "prep_time" => 45, // Integer value for prep_time
-    "cook_time" => 30, // Integer value for cook_time
-    "total_time" => 75,
-    "cusine" => "Mexican",
-    "difficulty" => "Hard",
-    "image_url" => "https://example.com/updated-image.jpg",
-    "author" => 3
-);
 
-$result = $updatePost($input, $conn);
-
-if ($result) {
-    echo "Recipe updated successfully.";
-} else {
-    echo "Error updating recipe.";
-}
 
 
 
