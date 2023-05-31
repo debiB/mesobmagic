@@ -9,10 +9,10 @@
   padding:0;
   margin: 0;
 }
-#recipeForm{
+#post_recipeForm{
   padding-left: 10vh;
 }
-.main_container{
+.post_main_container{
   background-color: #F8F8FF;
   box-shadow: 10px;
   margin: auto;
@@ -21,7 +21,7 @@
   border-radius: 50px;
   padding:3vh;
 }
-#recipeForm label, #input-container{
+#post_recipeForm label, #input-container{
     display: block;
 }
 #input-container label{
@@ -46,7 +46,7 @@
 p, label, input, ol, div{
   font-family: "Encode Sans Semi Condensed", sans-serif;
 }
-h1{
+.post-header{
   font-family: "Encode Sans Semi Condensed", sans-serif;
   font-weight: 900;
   margin-left:30%;
@@ -56,14 +56,14 @@ h1{
   margin-top: 5%;
   font-size: 8vh;
 }
-label{
+.post_label{
   font-size:20px;
   font-weight:600;
   margin-bottom: 2%;
   margin-top: 1%;
 }
 
-.main_container hr{
+.post_main_container hr{
   color: white;
 }
 #photo{
@@ -161,7 +161,7 @@ button[type = "submit"]:hover{
 .prep input,p{
   display: inline;
 }
-.recipeForm p{
+#post_recipeForm p{
   width: 80%;
   padding-bottom: 3vh;
 }
