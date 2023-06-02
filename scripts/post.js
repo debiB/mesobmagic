@@ -1,4 +1,4 @@
-document.getElementById("recipeForm").addEventListener("submit", function(event) {
+document.getElementById("post_recipeForm").addEventListener("submit", function(event) {
   event.preventDefault(); // Prevent form submission
 
   // Clear previous error messages
@@ -91,7 +91,15 @@ document.getElementById("recipeForm").addEventListener("submit", function(event)
     } else {
       var allowedFormats = ["jpg", "jpeg", "png"]; // Add more allowed formats if needed
       var fileExtension = photoInput.files[0].name.split(".").pop().toLowerCase();
-
+      var file = photoInput.files[0];
+  
+    var maxSize = 2 * 1024 * 1024; 
+    
+    if (file.size > maxSize) {
+      photoError.textContent = "The selected photo exceeds 2 MB.";
+      return false;
+    } 
+   
       if (!allowedFormats.includes(fileExtension)) {
         photoError.textContent = "Invalid file format. Only JPG, JPEG, and PNG are allowed.";
         return false;
@@ -99,6 +107,9 @@ document.getElementById("recipeForm").addEventListener("submit", function(event)
         photoError.textContent = ""; // Clear any previous error message
         return true;
       }
+
+
+
     }
   }
 
@@ -207,6 +218,7 @@ document.getElementById("recipeForm").addEventListener("submit", function(event)
     event.target.submit();
     alert("your recipie has been posted successfuly")
     location.reload();
+    
   }
 });
 var count = 1; // Counter for input fields
@@ -320,10 +332,19 @@ var fileUploadLabel = document.getElementById("file-upload-label");
 var uploadStatus = document.querySelector(".upload-status");
 var photoError = document.getElementById("photoError");
 
+
+  
+
+
+
+
+
+
 photoInput.addEventListener("change", function () {
   if (photoInput.files && photoInput.files[0]) {
     uploadStatus.innerText = "Selected file: " + photoInput.files[0].name;
     fileUploadLabel.innerText = "Change file";
+    
     photoError.innerText = ""; // Clear any previous error message
   } else {
     uploadStatus.innerText = "No file selected";

@@ -7,11 +7,11 @@
 
 <div class="container">
   <label for="search" class="searchtxt">Search</label>
-  <form action="<?php echo $_SERVER["PHP_SELF"];?>" method="get" id  = "cont">
+  <form action="<?php echo $_SERVER["PHP_SELF"];?>" method="get" id  = "cont" class="search-form">
   <div class="search-container">
     
     <input type="text" id="search" name = "input">
-    <button type="submit"class="search-container button" id = "search-btn" ></button>
+    <button type="submit" id = "search-btn" ></button>
     
   </div>  
   <label for="filter" class="searchtxt">Filter by</label>
@@ -63,7 +63,6 @@ else{
 } 
 ?>
 <?php 
-// print_r($_GET);
 if ((isset($_GET['function']) && isset($_GET['input']))):
 ?>
   
@@ -75,8 +74,8 @@ if ((isset($_GET['function']) && isset($_GET['input']))):
   ?>
     <div class="card">
 
-      <img class="recipie_pic" src="https://www.alphafoodie.com/wp-content/uploads/2023/01/Falafel-square.jpeg">
-      <p class="auth"><?php echo $item['author'] ?></p>
+      <img class="recipie_pic" src="<?php echo $item["image_url"];?>">
+      <p class="auth"><?php echo $getAuthor($item['author'], $conn)["first_name"] . " " . $getAuthor($item['author'], $conn)["last_name"];  ?></p>
       <a href="single_item.php?recipe=<?php echo $item['rid']; ?>">
         <p class="r_name"><?php echo $item['recipe_name'] ?></p>
       </a>

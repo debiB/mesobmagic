@@ -2,14 +2,15 @@
 
     include("/opt/lampp/htdocs/mesobmagic/inc/config/dbconn.php");
 
+
     
 
     $createPost = function ($input, $conn) {
         $insert_stmt = "INSERT INTO `recepie` (
             `recipe_name`, `description`, `ingredients`, `instructions`,
-            `prep_time`, `cook_time`, `cuisine`, `difficulty_level`,
+            `prep_time`, `cook_time`, `total_time`, `cuisine`, `difficulty_level`,
             `image_url`, `author`
-        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?)";
     
         $stmt = $conn->prepare($insert_stmt);
     
@@ -108,6 +109,43 @@
             return false;
         }
     };
+
+    
+    print_r($_POST);
+
+    if(isset($_POST['recipeName'])){
+
+        $ingredients = array();
+
+        // foreach($ingredients as $ingredient){
+        //     $ingredients[] = join(",", $ingredient);
+        // }
+
+        $ingredients = join("_!", $_POST['ingredient']);
+        $instructions = join("_!", $_POST['step']);
+
+        include "/opt/lampp/htdocs/mesobmagic/php/uploadImages.php";
+       
+        $input = [
+            "recepie_name" => $_POST['recipeName'],
+            "description" => $_POST['description'],
+            "ingredient" => $ingredients,
+            "instruction" => $instructions,
+            "prep_time"=> $_POST['prepTime'],
+            "cook_time"=>$_POST['cookTime'],
+            "total_time"=>$_POST['prepTime'] + $_POST['cookTime'],
+            "cusine"=> $_POST['cuisine'],
+            "difficulty"=>$_POST['difficulty'],
+            "image_url"=>$imagePath,
+            "author"=>intval($_POST['authorName'])];
+        
+        
+        
+
+        $createPost($input, $conn);
+        // print_r($input);
+        
+    }
 
 
 

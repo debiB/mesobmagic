@@ -2,6 +2,7 @@
 *{
   padding: 0;
   margin: 0;
+  box-sizing: border-box;
 }
 body{
   height: 100%;
@@ -16,26 +17,43 @@ body{
     font-weight: 600;
     padding:30px;
 }
-.container, form{
+.container, .search-form{
     align-items: center;
     justify-content: center;
+  
 
 }
 .search-container {
     display: flex;
     align-items: center;
-    width: 500px;
+    width: 50vh;
     background-color: #f2f2f2;
     border-radius: 20px;
     padding: 5px;
+    max-height: 50px;
+    border: solid 1px;
+    /* justify-content: space-between; */
+    padding-left: 20px;
+    overflow: hidden;
+
   }
   
   .search-container input[type="text"] {
     flex: 1;
     border: none;
-    padding: 5px;
+    /* padding: 5px; */
     font-size: 16px;
+    /* max-height: 30px; */
     background-color: #f2f2f2;
+    padding: 0;
+    margin: 0;
+
+    
+  }
+  .search-container input[type="text"]:focus {
+    outline: none;
+    height: 50px;
+    
   }
   
   .search-container button[type="submit"] {
@@ -45,8 +63,22 @@ body{
     background-repeat: no-repeat;
     background-size: contain;
     width: 30px;
-    height: 30px;
+    height: 40px;
     cursor: pointer;
+    margin: 0;
+    padding-right: 10px;
+  }
+  .search-container button[type="submit"]:hover{
+    border: none;
+    background-color: transparent;
+    background-image: url("../images/search_button-removebg-preview.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 30px;
+    height: 40px;
+    cursor: pointer;
+    margin: 0;
+    padding-right: 10px;
   }
   .filter{
     border-radius: 10px;
@@ -91,6 +123,7 @@ body{
     height: 20%;
     box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
     padding:0;
+
   }
   
   .card img {
@@ -102,6 +135,7 @@ body{
     height: auto;
     max-width: 100%;
     margin-bottom: 20px;
+    top :2em;
   }
   .auth{
     font-family: "Encode Sans Semi Condensed", sans-serif;
@@ -186,11 +220,14 @@ body{
   text-decoration: none;
 }
 
-form{
+.search-form{
 
   display: flex;
   /* width:auto;
   height: auto; */
+  align-items: center;
+  /* margin-left: 10px; */
+
   
 }
 

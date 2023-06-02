@@ -1,16 +1,8 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Recipe Form</title>
-  <link rel="stylesheet" href="..\css\post.css">
-  <script src="https://apis.google.com/js/api.js"></script>
-</head>
-<body>
-  <object data="nav.html" id="imported-content" type="text/html"></object>
+<?php include  "/opt/lampp/htdocs/mesobmagic/inc/header.php"?>
   <div class="post_main_container">
     <h1 class ="post-header">+ Add a recipie</h1>
     <hr class = "post_separator_line" style="color: white; margin:5%;">
-    <form id="post_recipeForm" method="post">
+    <form id="post_recipeForm" method="post" action = "postRecepie.php" enctype="multipart/form-data">
       <div>
         <label for="authorName" class = "post_label">Author's Name:</label>
         <input type="text" id="authorName" name="authorName" class = "post_input">
@@ -46,7 +38,7 @@
       <div>
         <label class = "post_label" for = "desc">Description:</label>
         <div class="directions" id="desc_directions">Share a story behind your recipe and what makes it special.</div>
-        <textarea id="desc" rows="5" col="5" placeholder="Describe your recpie"></textarea>
+        <textarea id="desc" rows="5" col="5" name = "description" placeholder="Describe your recpie"></textarea>
         <span class="error" id="desceError"></span>
       </div>
       <div>
@@ -100,12 +92,12 @@
         </select>
         <span class="error" id="difficultyError"></span>
       </div>
-      <button type="submit">Submit</button>
+      <button type="submit" onclick="submitForm()">Submit</button>
     </form>
     
   </div>
 </div>
-<script src="../js/post.js"></script>
-<object data="footer.html" id="footer" type="text/html"></object> 
-</body>
-</html>
+<script src="../scripts/post.js"></script>
+<script src="https://apis.google.com/js/api.js"></script>
+<script src="../scripts/ajax.js"></script>
+<?php include "/opt/lampp/htdocs/mesobmagic/inc/footer.php"?>

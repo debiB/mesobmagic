@@ -5,7 +5,7 @@ $fetchByIngredient =  function($ing, $conn){
 
     $ans = array();
  
-    $filter_stmt = "SELECT `recepie`.`rid`, `recipe_name`, `image_url`, `author`, AVG(`rating`) as rating FROM `recepie` LEFT JOIN `ratings` ON `ratings`.`rid` = `recepie`.`rid`  WHERE `ingredients` LIKE '% " . $ing . " %'GROUP BY `ratings`.`rid`;";
+    $filter_stmt = "SELECT `recepie`.`rid`, `recipe_name`, `image_url`, `author`, AVG(`rating`) as rating FROM `recepie` LEFT JOIN `ratings` ON `ratings`.`rid` = `recepie`.`rid`  WHERE `ingredients` LIKE '% _!" . $ing . "_!%'GROUP BY `ratings`.`rid`;";
 
 
     $result = $conn->query($filter_stmt);
@@ -117,7 +117,7 @@ $fetchByDifficulty = function($diff, $conn){
 
 $fetchByName = function($name, $conn){
     $ans = array();
-    $filter_stmt = "SELECT `recepie`.`rid`, `recipe_name`, `image_url`, `author`, AVG(`rating`) as rating FROM `recepie` LEFT JOIN `ratings` ON `ratings`.`rid` = `recepie`.`rid` WHERE `recipe_name` LIKE '% ". $name. " %'  OR `recipe_name` LIKE '%". $name. " %' OR `recipe_name` LIKE '% ". $name. "%' GROUP BY `recepie`.`rid`;";
+    $filter_stmt = "SELECT `recepie`.`rid`, `recipe_name`, `image_url`, `author`, AVG(`rating`) as rating FROM `recepie` LEFT JOIN `ratings` ON `ratings`.`rid` = `recepie`.`rid` WHERE `recipe_name` LIKE '% ". $name. " %'  OR `recipe_name` LIKE '%". $name. " %' OR `recipe_name` LIKE '% ". $name. "%' OR `recipe_name` = '". $name. "' GROUP BY `recepie`.`rid`;";
     $result = $conn->query($filter_stmt);
     return $result;
     
@@ -136,6 +136,21 @@ $fetchSingleItem = function($rid, $conn){
     }
 
 };
+
+$getAuthor = function($id, $conn){
+
+    $select_stmt = "SELECT * FROM `user` WHERE uid = " .$id . ";";
+    $result = $conn->query($select_stmt);
+
+    if ($result->num_rows > 0) {
+      return $result->fetch_assoc();
+
+    } else {
+      return [];
+    }
+
+
+}
 
 
 

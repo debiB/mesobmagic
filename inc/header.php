@@ -18,6 +18,7 @@ rel="stylesheet">
     <link rel="stylesheet" href="../styles/search.css"> 
     <link rel="stylesheet" href="../styles/footer.css">
     <link rel="stylesheet" href="../styles/single-item.css">
+    <link rel="stylesheet" href="../styles/post.css">
 </head>
 <body>
   <div class="main_container">

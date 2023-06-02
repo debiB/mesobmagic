@@ -27,9 +27,9 @@ $data = $fetchSingleItem($recipe, $conn);
         <div class="single-item-section">
             <h2> Ingredients</h1>
                 <ul>
-                    <?php $ing_array  = explode(" ", $data['ingredients'], 10);
+                    <?php $ing_array  = explode("_!", $data['ingredients'], 10);
                     foreach ($ing_array as $ing_item) : ?>
-                        <li> <?php echo join(" ", explode("_", $ing_item)) ?> </li>
+                        <li> <?php echo $ing_item ?> </li>
                     <?php endforeach; ?>
 
                 </ul>
@@ -38,7 +38,7 @@ $data = $fetchSingleItem($recipe, $conn);
         <div class="single-item-section">
             <h2> Instructions</h1>
                 <ol>
-                    <?php $inst_array  = explode(".", $data['instructions']);
+                    <?php $inst_array  = explode("_!", $data['instructions']);
                     // print_r($inst_array);
                     foreach ($inst_array as $inst_item) :
                         if ($inst_item) :
