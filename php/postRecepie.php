@@ -1,11 +1,13 @@
 <?php
-
+    session_start();
+    
     include("/opt/lampp/htdocs/mesobmagic/inc/config/dbconn.php");
 
 
-    
+ 
 
     $createPost = function ($input, $conn) {
+
         $insert_stmt = "INSERT INTO `recepie` (
             `recipe_name`, `description`, `ingredients`, `instructions`,
             `prep_time`, `cook_time`, `total_time`, `cuisine`, `difficulty_level`,
@@ -30,7 +32,7 @@
             $input["cusine"],
             $input["difficulty"],
             $input["image_url"],
-            $input["author"]
+            $_SESSION["uid"]
         );
     
         $result = $stmt->execute();
@@ -76,7 +78,7 @@
             $input["cusine"],
             $input["difficulty"],
             $input["image_url"],
-            $input["author"],
+            $_SESSION["uid"],
             $input["rid"]
         );
     

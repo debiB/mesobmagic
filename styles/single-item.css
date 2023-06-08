@@ -113,15 +113,15 @@ body{
     width: 30px;
     margin-left: 10px;
 }
-.star {
+#star-rating .star {
     font-size: 50px;
     cursor: pointer;
     color: gray;
     margin-left: 15px;
   }
   
-  .star.hover,
-  .star.active {
+  #star-rating .star.hover,
+  #star-rating .star.active {
     color: gold;
   }
   #star-rating{

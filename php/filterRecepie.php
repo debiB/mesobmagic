@@ -98,6 +98,7 @@ $fetchByCookTime = function($cookt, $conn){
 };
 $fetchByDifficulty = function($diff, $conn){
 
+    $diff = ucwords($diff);
     $ans = array();
     $filter_stmt = "SELECT `recepie`.`rid`, `recipe_name`, `image_url`, `author`, AVG(`rating`) as rating FROM `recepie` LEFT JOIN `ratings` ON `ratings`.`rid` = `recepie`.`rid` WHERE `difficulty_level` = '{$diff}' GROUP BY `recepie`.`rid`;";
     
@@ -116,6 +117,7 @@ $fetchByDifficulty = function($diff, $conn){
 };
 
 $fetchByName = function($name, $conn){
+    $name = ucwords($name);
     $ans = array();
     $filter_stmt = "SELECT `recepie`.`rid`, `recipe_name`, `image_url`, `author`, AVG(`rating`) as rating FROM `recepie` LEFT JOIN `ratings` ON `ratings`.`rid` = `recepie`.`rid` WHERE `recipe_name` LIKE '% ". $name. " %'  OR `recipe_name` LIKE '%". $name. " %' OR `recipe_name` LIKE '% ". $name. "%' OR `recipe_name` = '". $name. "' GROUP BY `recepie`.`rid`;";
     $result = $conn->query($filter_stmt);
@@ -138,7 +140,9 @@ $fetchSingleItem = function($rid, $conn){
 };
 
 $getAuthor = function($id, $conn){
-
+    if($id == null){
+        $id = 1;
+    }
     $select_stmt = "SELECT * FROM `user` WHERE uid = " .$id . ";";
     $result = $conn->query($select_stmt);
 

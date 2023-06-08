@@ -12,9 +12,8 @@
 rel="stylesheet">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Encode+Sans&family=Encode+Sans+Semi+Condensed:wght@100;200&family=Lato:ital,wght@0,100;0,300;0,400;0,900;1,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />    
-
+<link href="https://fonts.googleapis.com/css2?family=Encode+Sans&family=Encode+Sans+Semi+Condensed:wght@100;200&family=Lato:ital,wght@0,100;0,300;0,400;0,900;1,400&display=swap" rel="stylesheet"> 
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
 
 <title>MesobMagic</title>
     <link rel="stylesheet" href="../styles/nav.css"> 
@@ -22,6 +21,7 @@ rel="stylesheet">
     <link rel="stylesheet" href="../styles/footer.css">
     <link rel="stylesheet" href="../styles/single-item.css">
     <link rel="stylesheet" href="../styles/post.css">
+    <link rel="stylesheet" href="../styles/profile.css">
 </head>
 <body>
   <div class="main_container">

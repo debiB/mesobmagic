@@ -1,0 +1,87 @@
+#profile-viewer {
+  background-color: #F8F8FF;
+  box-shadow: 10px;
+  margin: auto;
+  width: 40%;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 50px;
+  padding: 3vh;
+  font-family: encode sans;
+  margin-top: 20px;
+  /* padding-left: 100px; */
+  overflow-wrap: break-word;
+  display: flex;
+  flex-direction: column;
+}
+
+
+
+.profile-field {
+  font-weight: bold;
+}
+
+#profile-picture {
+  height: 200px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+}
+
+.profile-title {
+  font-size: 40px;
+  margin-bottom: 50px;
+  display: flex;
+  justify-content: center;
+}
+
+.username {
+  display: flex;
+  justify-content: center;
+  font-size: 30px;
+}
+
+.profile-info {
+  min-height: 50px;
+  background-color: #ffecd4;
+  margin-top: 15px;
+  border-radius: 5px;
+  padding-left: 15px;
+  display: flex;
+  justify-content: left;
+  font-size: 20px;
+}
+
+.material-symbols-outlined {
+  font-size: 35px;
+  margin-top: 5px;
+}
+
+.profile-info-secs {
+  max-width: 50vw;
+  margin-left: 3vw;
+  margin-right: 7vw;
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.profile-info>label,
+.profile-content {
+  margin-top: 5px;
+  margin-left: 20px;
+}
+
+@media ((max-width:850px)) {
+  .profile-info>label
+{
+  display: none;
+}
+}
+
+@media ((max-width:720px)) {
+  
+ .profile-title{
+  font-size: 4vw;
+ }
+}

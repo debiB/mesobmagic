@@ -1,6 +1,7 @@
 <?php
 include "/opt/lampp/htdocs/mesobmagic/php/filterRecepie.php";
 include "/opt/lampp/htdocs/mesobmagic/inc/header.php";
+session_start();
 $recipe = intval($_REQUEST['recipe']);
 $data = $fetchSingleItem($recipe, $conn);
 ?>
@@ -9,7 +10,7 @@ $data = $fetchSingleItem($recipe, $conn);
 
     <div class="top-single-item">
         <div class= "top-title">
-        <h1 class="single-item-title"><?php echo "Ethiopian Kitfo" ?> </h1><a  class="single-auth-link" href="<?php echo 'user.php?id=' . $data['author'];?>"><small class="single-item-author"> by <?php
+        <h1 class="single-item-title"><?php echo "Ethiopian Kitfo" ?> </h1><a  class="single-auth-link" href="<?php echo 'userProfile.php?user=' . $data['author'];?>"><small class="single-item-author"> by <?php
         if(isset($data['author'])){
         $auth = $getAuthor($data['author'], $conn);
         $name = $auth['first_name'] . " " . $auth['last_name'];}
@@ -106,7 +107,7 @@ $data = $fetchSingleItem($recipe, $conn);
   <span class="star" data-rating="5">&#9733;</span>
 </div>
 <input type="hidden" id="rating-input" name="rating">
-        
+<span id = "notice"></span>    
 
 
         
@@ -133,7 +134,7 @@ $data = $fetchSingleItem($recipe, $conn);
         let rating = "<?php echo round($data["avg"], 1);?>";
         console.log(rating);
         let img;
-        while (i <= 5){
+        while (i <= 4){
             img = document.createElement('img');
             if( i < rating && i+1 <= rating){
                 img.setAttribute("src", "../images/stars/full.png");
@@ -166,10 +167,15 @@ $data = $fetchSingleItem($recipe, $conn);
         });
 
         star.addEventListener("click", () => {
-            const rating = star.dataset.rating;
-            ratingInput.value = rating;
-            setRating(rating);
-        });
+  const rating = star.dataset.rating;
+  ratingInput.value = rating;
+  setRating(rating);
+  uid = parseInt("<?php echo $_SESSION['uid']?>", 10);
+  rid = parseInt("<?php echo $_REQUEST['recipe']?>", 10);
+  console.log(uid, rid);
+  submitRating(uid, rid, rating);
+});
+
         });
 
         function setRating(rating) {
@@ -187,6 +193,27 @@ $data = $fetchSingleItem($recipe, $conn);
             star.classList.remove("hover");
         });
         }
+
+        function submitRating(user_uid, recipe_rid, user_rating) {
+  var xhr = new XMLHttpRequest();
+  var url = "ratings.php"; // Replace with your API endpoint URL
+
+  var data = new FormData();
+  data.append('uid', user_uid);
+  data.append('rid', recipe_rid);
+  data.append('rating', user_rating);
+
+  xhr.open("POST", url, true);
+
+  xhr.onreadystatechange = function() {
+    if (xhr.readyState === 4 && xhr.status === 200) {
+      document.getElementById("notice").textContent = xhr.responseText;
+    }
+  };
+
+  xhr.send(data);
+}
+
 
 
             
