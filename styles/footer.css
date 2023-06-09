@@ -60,3 +60,54 @@
     color: white;
     padding-top:2%;
   }  
+
+@media (max-width: 600px) {
+  .footer {
+    padding: 10px;
+  }
+
+  .footer-nav a {
+    margin: 15px 10px;
+    font-size: 14px;
+  }
+
+  .footer-copyright {
+    font-size: 10px;
+  }
+
+  .footer_text {
+    font-size: 10px;
+  }
+
+  .social-icons img {
+    width: 3vh;
+    height: 3.3vh;
+    padding: 0 15px;
+  }
+}
+
+@media (min-width: 601px) and (max-width: 1024px) {
+  .footer {
+    padding: 15px;
+  }
+
+  .footer-nav a {
+    margin: 20px 15px;
+    font-size: 16px;
+  }
+
+  .footer-copyright {
+    font-size: 11px;
+  }
+
+  .footer_text {
+    font-size: 11px;
+  }
+
+  .social-icons img {
+    width: 3.5vh;
+    height: 3.8vh;
+    padding: 0 20px;
+  }
+}
+
