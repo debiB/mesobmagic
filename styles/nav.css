@@ -86,3 +86,58 @@ header{
   border-radius: 10px;
 }
 
+@media (max-width: 600px) {
+  .lowernav {
+    flex-direction: column;
+    padding: 5px;
+  }
+
+  .dicover_n {
+    font-size: 16;
+    padding-right: 20px;
+    padding-left: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+
+  .upnavl, .ls,signl, #lsup {
+    font-size: 16px;
+  }
+
+  .upnavl li, #lsup li {
+    padding: 0px 10px;
+  }
+
+  header {
+    flex-direction: column;
+    padding: 5px 4%;
+  }
+}
+
+
+@media (min-width: 601px) and (max-width: 1024px) {
+  .lowernav {
+    padding: 8px;
+  }
+
+  .dicover_n {
+    font-size:16px;
+    padding-right: 50px;
+    padding-left: 50px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+  }
+
+  .upnavl, .ls, .signl, #lsup {
+    font-size: 16px;
+  }
+
+ .upnavl li, #lsup li {
+    padding: 0px 15px;
+  }
+
+  header {
+    padding: 5px 6%;
+  }
+}
+
