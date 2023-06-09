@@ -131,6 +131,46 @@ body{
     margin:15px;
   }
   
+  @media (min-width: 601px) and (max-width: 1024px) {
+    .top-single-item {
+      width: 90%;
+      padding: 2vh;
+      padding-left: 50px;
+   }
+  
+    .single-item-img > img {
+      width: 80%;
+    }
+  
+    #single-stars img, #rate-stars img {
+      width: 20px;
+    }
+  
+    #star-rating .star {
+      font-size: 40px;
+    }
+  }
+
+  @media (min-width: 1025px) {
+    .top-single-item {
+      width: 80%;
+      padding: 3vh;
+      padding-left: 100px;
+    }
+  
+    .single-item-img > img {
+      width: 40em;
+    }
+  
+    #single-stars img, #rate-stars img {
+      width: 20px;
+    }
+  
+    #star-rating .star {
+      font-size: 50;
+    }
+  }
+  
  
 
 
