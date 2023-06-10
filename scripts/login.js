@@ -221,7 +221,7 @@ function validateCountry() {
 	  isValidJobTitle &&
 	  isValidCountry
 	) {
-	  document.getElementById('success-message').innerHTML = 'Sign up successful!';
+	  alert("Sign-up successful.")
 	  return true;
 	} else {
 	  document.getElementById('success-message').innerHTML = '';
@@ -235,7 +235,7 @@ function validateCountry() {
   
 	if (validateSignUpForm()) {
 	  // If form validation is successful, proceed with submission
-	  this.submit();
+	  location.reload();
 	}
   });
   
