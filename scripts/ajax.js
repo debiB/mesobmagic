@@ -38,7 +38,7 @@
 function submitForm() {
   // Create a new FormData object
   var formData = new FormData(document.getElementById("post_recipeForm"));
-
+  formData.append("function", "create");
   // Create a new XMLHttpRequest object
   var xhr = new XMLHttpRequest();
 
@@ -61,3 +61,32 @@ function submitForm() {
   // Send the form data
   xhr.send(formData);
 }
+
+function submitUpdateForm() {
+  // Create a new FormData object
+  var formData = new FormData(document.getElementById("post_recipeForm"));
+  formData.append("function", "update");
+  // Create a new XMLHttpRequest object
+  var xhr = new XMLHttpRequest();
+
+  // Set up the callback function for the AJAX request
+  xhr.onreadystatechange = function() {
+    if (xhr.readyState === XMLHttpRequest.DONE) {
+      if (xhr.status === 200) {
+        // Request successfu
+        console.log(xhr.responseText);
+      } else {
+        // Request failed
+        console.log(xhr.status);
+      }
+    }
+  };
+
+  // Open the AJAX request
+  xhr.open("POST", "postRecepie.php", true);
+
+  // Send the form data
+  xhr.send(formData);
+}
+
+

@@ -154,7 +154,20 @@ $getAuthor = function($id, $conn){
     }
 
 
-}
+};
+
+$popularN = function($n, $conn){
+    $filter_stmt = "SELECT *, COUNT(`rating`) as count, AVG(`rating`) as avg FROM `recepie` LEFT JOIN `ratings` ON `ratings`.`rid` = `recepie`.`rid` GROUP BY `recepie`.`rid` ORDER BY rating DESC LIMIT $n;
+    ";
+    $result = $conn->query($filter_stmt);
+
+    if ($result->num_rows > 0) {
+      return $result->fetch_assoc();
+
+    } else {
+      return [];
+    }
+};
 
 
 

@@ -14,10 +14,12 @@
         <span class="error" id="recipeNameError"></span>
       </div>
       <div>
-        <label class = "post_label">Photo:</label>
+      <label class = "post_label">Photo:</label>
+        <img id="imagePreview" src="#" alt="Image Preview" style="display: none;" width="200px">
+        
         <div class="photo_container">
           <label for="photo" id="file-upload-label">Choose a file</label>
-          <input type="file" id="photo" name="photo">
+          <input type="file" id="photo" name="photo" onchange="previewImage(event)">
           <span class="upload-status" style="padding: 1vh;">No file selected</span>
         </div>
         <span class="error" id="photoError" style="display: block"></span>
@@ -98,6 +100,26 @@
   </div>
 </div>
 <script src="../scripts/post.js"></script>
+<script>
+
+function previewImage(event) {
+  var input = event.target;
+  var preview = document.getElementById("imagePreview");
+
+  if (input.files && input.files[0]) {
+    var reader = new FileReader();
+
+    reader.onload = function(e) {
+      preview.setAttribute('src', e.target.result);
+      preview.style.display = "block";
+    }
+
+    reader.readAsDataURL(input.files[0]);
+  }
+}
+
+
+</script>
 <script src="https://apis.google.com/js/api.js"></script>
 <script src="../scripts/ajax.js"></script>
 <?php include "/opt/lampp/htdocs/mesobmagic/inc/footer.php"?>

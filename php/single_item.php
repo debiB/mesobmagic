@@ -10,7 +10,7 @@ $data = $fetchSingleItem($recipe, $conn);
 
     <div class="top-single-item">
         <div class= "top-title">
-        <h1 class="single-item-title"><?php echo "Ethiopian Kitfo" ?> </h1><a  class="single-auth-link" href="<?php echo 'userProfile.php?user=' . $data['author'];?>"><small class="single-item-author"> by <?php
+        <h1 class="single-item-title"><?php echo $data['recipe_name'] ?> </h1><a  class="single-auth-link" href="<?php echo 'userProfile.php?user=' . $data['author'];?>"><small class="single-item-author"> by <?php
         if(isset($data['author'])){
         $auth = $getAuthor($data['author'], $conn);
         $name = $auth['first_name'] . " " . $auth['last_name'];}
@@ -32,7 +32,7 @@ $data = $fetchSingleItem($recipe, $conn);
         
         ?></p></i></div>
         <div class="single-item-img">
-            <img src="<?php echo "https://www.alphafoodie.com/wp-content/uploads/2023/01/Falafel-square.jpeg" ?>" alt="<?php echo $data["recipe_name"] ?>" >
+            <img src="<?php echo $data['image_url']?>" alt="<?php echo $data["recipe_name"] ?>" >
             <div class="single-item-rating">
                 <span id = "single-stars"></span>
                 <span class="single-count"> <?php echo round( $data["avg"], 1); ?> (<?php echo $data["count"] ?> reviews)</span>

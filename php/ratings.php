@@ -1,10 +1,10 @@
 <?php
+session_start();
 include "/opt/lampp/htdocs/mesobmagic/inc/config/dbconn.php";
 
 $rateRecipe = function($uid, $rid, $rating, $conn) {
 
     $select_stmt = "SELECT `uid`, `rid`, `rating` FROM `ratings` WHERE uid = $uid and rid = $rid;";
-
     $result = $conn->query($select_stmt);
 
     if ($result->num_rows > 0) {

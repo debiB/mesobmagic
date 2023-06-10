@@ -45,6 +45,27 @@
     };
 
     $updatePost = function ($input, $conn) {
+
+        $select_img = "SELECT image_url from recepie WHERE rid = " .$input["rid"] .";";
+
+        print_r($input);
+
+        $result = $conn->query($select_img);
+
+    if ($result->num_rows > 0){
+      $img = $result->fetch_assoc()['image_url'];
+      if (file_exists($img)) {
+        if (unlink($img)) {
+            echo 'File deleted successfully.';
+        } else {
+            echo 'Unable to delete the file.';
+        }
+    } else {
+        echo 'File does not exist.';
+}
+
+    }
+
         $update_stmt = "UPDATE `recepie` SET
             `recipe_name` = ?,
             `description` = ?,
@@ -61,6 +82,7 @@
             `rid` = ?";
     
         $stmt = $conn->prepare($update_stmt);
+
     
         if (!$stmt) {
             return false;
@@ -139,15 +161,23 @@
             "cusine"=> $_POST['cuisine'],
             "difficulty"=>$_POST['difficulty'],
             "image_url"=>$imagePath,
-            "author"=>intval($_POST['authorName'])];
+            "author"=> $_SESSION['uid']];
         
         
         
+        if($_POST['function'] == "create")
+            $createPost($input, $conn);
+        else if ($_POST['function'] == "update"){
+            $input['rid'] = $_POST['rid'];
 
-        $createPost($input, $conn);
+            
+
+            $updatePost($input, $conn);
+        }
         // print_r($input);
         
     }
+
 
 
 

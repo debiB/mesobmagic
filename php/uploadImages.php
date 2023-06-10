@@ -1,7 +1,8 @@
 <?php
+session_start();
 if (isset($_POST['recipeName'])) {
     print_r($_FILES);
-    $targetDirectory = "../uploads/recpie-images";
+    $targetDirectory = "../uploads/recpie-images/";
     $extension = strtolower(pathinfo($_FILES["photo"]["name"], PATHINFO_EXTENSION));
     $uniqueName = uniqid() . '.' . $extension;
     $targetFile = $targetDirectory . $uniqueName;

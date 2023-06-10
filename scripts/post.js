@@ -216,7 +216,7 @@ document.getElementById("post_recipeForm").addEventListener("submit", function(e
   if (isvalid) {
     // If all fields are valid, submit the form and reload the page
     event.target.submit();
-    alert("your recipie has been posted successfuly")
+    alert("your recipie has been saved successfuly")
     location.reload();
     
   }
@@ -257,6 +257,7 @@ function addIngredient() {
 // Function to Remove Ingredient Field
 function removeIngredient(event) {
   var li = event.target.parentNode;
+  // console.log(event);
   var ul = li.parentNode;
   ul.removeChild(li);
 }
@@ -297,7 +298,10 @@ function addStepField() {
   // Add an event listener to the remove button
   removeButton.addEventListener("click", function() {
     stepContainer.remove(); // Remove the step field when the button is clicked
+    stepCount-=1
   });
+
+ 
 
   // Append the label, textarea, and remove button to the step container
   stepsDiv.appendChild(stepTextarea);
@@ -308,6 +312,14 @@ function addStepField() {
 
   // Append the step container to the steps container
   stepsContainer.appendChild(stepContainer);
+}
+
+function removeStep(event){
+  // this.remove();
+  var li = event.target.parentNode;
+  // console.log(event);
+  var ul = li.parentNode;
+  ul.remove(li);
 }
 
 // Add an event listener to the "Add Step" button
