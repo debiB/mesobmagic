@@ -66,11 +66,107 @@
   justify-content: center;
 }
 
+.profile-edit-button {
+      background-color:#F8F8FF;
+      color: orange;
+      text-decoration: none;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+      margin-left: 14px;
+      margin-top: 20px;
+      width:60px;
+      height: 40px;
+    }
+
+.profile-edit-button:hover {
+    background-color:orange;
+    color:white;
+  }
+  
+
 .profile-info>label,
 .profile-content {
   margin-top: 5px;
   margin-left: 20px;
 }
+.edit-profile-container{
+  width: 70vw;
+  font-family: encoded sans;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 30px;
+  
+}
+
+.edit-profile-form {
+  width: 100%;
+  margin: 0 auto;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  background-color: #f2f2f2;
+  padding-left: 200px;
+  padding-right: 200px;
+  border-radius: 10px;
+  border: solid 2px;
+}
+
+.edit-profile-label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.edit-profie-input
+ {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-bottom: 10px;
+}
+
+.edit-profile-file {
+  margin-bottom: 10px;
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: white;
+  color: black;
+  cursor: pointer;
+  font-size:18px;
+  font-weight:600;
+  font-family: "Encode Sans Semi Condensed", sans-serif;
+  border: #DD7230 solid;
+  border-radius: 10px;
+  margin-bottom: 2%;
+  margin-top: 2vh;
+}
+
+.edit-profile-submit {
+  background-color: #f2884b;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+label [for = "profileImage"]{
+  margin-top: 0;
+} 
+
+
+
+.edit-photo{
+  width: 150px;
+  height: 150px;
+  overflow: hidden;
+}
+
+
 
 @media ((max-width:850px)) {
   .profile-info>label

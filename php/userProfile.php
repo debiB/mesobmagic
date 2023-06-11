@@ -1,14 +1,22 @@
 <?php
+session_start();
 include "/opt/lampp/htdocs/mesobmagic/php/filterUser.php";
 include "/opt/lampp/htdocs/mesobmagic/inc/header.php";
 
-$uid = $_REQUEST['user'];
+$uid = intval($_REQUEST['user']);
 $data = $getUser($uid, $conn);
 
-
 ?>
+
+
 <div id="profile-viewer">
-  <div class = "profile-title"><h2 >User Profile</h2></div>
+  <div class = "profile-title"><h2 >User Profile</h2>
+  <?php if(isset($_SESSION['uid']) && $_SESSION['uid'] == $uid):?>
+    <button class="profile-edit-button"><span class="material-symbols-outlined">
+edit
+</span></button>
+  <?php endif?>
+</div>
   <div id="profile-picture">
     <img  alt="Profile Picture" src="../mesobmagic22v2.gif" width= "200px" height="200px">
   </div>
