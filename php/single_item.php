@@ -1,7 +1,9 @@
 <?php
+session_start();
 include "/opt/lampp/htdocs/mesobmagic/php/filterRecepie.php";
 include "/opt/lampp/htdocs/mesobmagic/inc/header.php";
-session_start();
+include "/opt/lampp/htdocs/mesobmagic/php/commentsController.php";
+
 $recipe = intval($_REQUEST['recipe']);
 $data = $fetchSingleItem($recipe, $conn);
 ?>
@@ -113,7 +115,100 @@ $data = $fetchSingleItem($recipe, $conn);
         
 
     </div>
+
+    <div class="comments-container">
+    <h1 class="comment-opener">Comments</h1>
+
+    <div class="user-comment">
+    <div class="write">Write a comment.</div>
+    <textarea placeholder="Comment: Question, Suggestion, Chef's Kiss?"> </textarea>
+    <br>
+    <input type= "button" class="submit-comment" value="Submit Comment">
+</div>
+
+<hr>
+
+    <div class="comment-section">
+
+    <?php
     
+    $top_comments = $getComment($recipe, NULL, $conn);
+    if($top_comments->num_rows > 0){
+
+        $R_comments = [];
+        
+    
+        while($comment = $top_comments->fetch_assoc()){
+            $R_comments[]  = $comment;
+        }
+
+
+    }
+
+    
+
+   foreach($R_comments as $comment):
+    
+    
+    ?>
+
+    <div class="comment-div">
+    <p class="comment-text"> <?php echo $comment['comment'];?></p>
+    <div class="comment-about">
+
+
+        <span  data-comm_id = "<?php echo $comment["cid"]?>" class="material-symbols-outlined comment-reply" onclick="showReply(event)">reply
+    </span>
+
+    
+    
+
+    <span class=  "comment-by"> by <a href="userProfile.php?user=<?php echo $comment['uid']?>"><?php
+    
+        $comm_author = $getAuthor($comment['uid'], $conn);
+        echo $comm_author['first_name']. " ". $comm_author["last_name"];
+    
+    
+    ?></a></span>
+    <span class="comment-on"> on <?php $dateString = $comment['ts']; // Example date string in dd-mm-yyyy format
+        // echo $dateString;
+        $date = DateTime::createFromFormat('Y-m-d', $dateString);
+
+        if ($date) {
+            $formattedDate = $date->format('M d, Y');
+            echo $formattedDate; // Output: Jun 10, 2023
+        } else {
+            echo "Invalid date format";
+        }?></span>
+    <span data-rcid = "<?php echo $comment['cid']?>"
+    data-rid = "<?php echo $comment['rid']?>" 
+    class="material-symbols-outlined expand-comment">
+
+    
+    
+expand_more
+</span>
+<span id = "comm-<?php echo $comment["cid"]?>" class="reply-box" style="display:none">
+    <br>
+    <input type = "text" name = "reply-<?php echo $comment["cid"] ?>">
+    <span class="material-symbols-outlined send-symb" onclick="handleReply(event)">
+send
+</span>
+    </span>
+</div>
+    <div id = "sub-<?php echo $comment['cid']?>"  class= "sub-comment"></div>
+    </div>
+
+    <?php endforeach;?>
+
+        
+
+
+
+    </div>
+
+
+    </div>
     <!-- <div id="rate-stars">
 
     <img src="../images/stars/empty.png" onclick = "rate()" onclick="rate()"/>
@@ -126,8 +221,9 @@ $data = $fetchSingleItem($recipe, $conn);
   
 
 
-    
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
 
+    <script src = "../scripts/comments-ajax.js"></script>
     <script >
         let stars = document.getElementById("single-stars");
         var i = 0;

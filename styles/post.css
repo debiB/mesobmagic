@@ -1,8 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Encode+Sans+Semi+Condensed:wght@400;600;900&display=swap');
-*{
-  padding: 0;
-  margin: 0;
-}
+
 #imported-content{
   width: 100%;
   height: 50vh;
