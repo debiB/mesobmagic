@@ -1,5 +1,5 @@
 <?php
-session_start();
+// session_start();
 include "/opt/lampp/htdocs/mesobmagic/php/filterRecepie.php";
 include "/opt/lampp/htdocs/mesobmagic/inc/header.php";
 include "/opt/lampp/htdocs/mesobmagic/php/commentsController.php";
@@ -119,11 +119,11 @@ $data = $fetchSingleItem($recipe, $conn);
     <div class="comments-container">
     <h1 class="comment-opener">Comments</h1>
 
-    <div class="user-comment">
+    <div class="user-comment" data-rid="<?php echo $recipe;?>">
     <div class="write">Write a comment.</div>
     <textarea placeholder="Comment: Question, Suggestion, Chef's Kiss?"> </textarea>
     <br>
-    <input type= "button" class="submit-comment" value="Submit Comment">
+    <input type= "button" class="submit-comment" value="Submit Comment" onclick="saveOGComment(event)">
 </div>
 
 <hr>
@@ -189,7 +189,7 @@ $data = $fetchSingleItem($recipe, $conn);
 expand_more
 </span>
 <span id = "comm-<?php echo $comment["cid"]?>" class="reply-box" style="display:none">
-    <br>
+    
     <input type = "text" name = "reply-<?php echo $comment["cid"] ?>">
     <span class="material-symbols-outlined send-symb" onclick="handleReply(event)">
 send

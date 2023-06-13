@@ -1,7 +1,6 @@
-<?php include "/opt/lampp/htdocs/mesobmagic/inc/config/dbconn.php";
-
-
-
+<?php
+session_start();
+ include "/opt/lampp/htdocs/mesobmagic/inc/config/dbconn.php";
 $getComment = function($rid, $rcid, $conn){
 
     $select_stmt = "";
@@ -35,11 +34,28 @@ $getCommentJSON = function($rid, $rcid){
 
 
 
+
+
     
     return json_encode(array_map("json_encode", $comments));
 };
 
-$saveComment = function($comment, $uid, $rid, $rcid, $conn) {
+$getParentCommentRid  = function($rcid, $conn){
+    $stmnt = "SELECT * FROM `comments` WHERE `cid` =  $rcid;";
+    $result = $conn->query($stmnt);
+    // var_dump($stmnt);
+    return $result->fetch_assoc()['rid'];
+};
+
+
+$saveComment = function($comment, $uid, $rid,  $rcid, $conn) {
+    var_dump($comment, $uid, $rid, $rcid);
+    if($rid == 0)
+        $rid = $GLOBALS["getParentCommentRid"](intval($rcid), $conn);
+    // return $rid;
+
+
+    if($rcid!== NULL){
     $insert_stmt = $conn->prepare("INSERT INTO comments (comment, uid, rid, rcid) VALUES (?, ?, ?, ?)");
     $insert_stmt->bind_param("siii", $comment, $uid, $rid, $rcid);
     
@@ -48,7 +64,30 @@ $saveComment = function($comment, $uid, $rid, $rcid, $conn) {
     } else {
         return false;
     }
+
+    }
+    else{
+
+    $insert_stmt = $conn->prepare("INSERT INTO comments (comment, uid, rid) VALUES (?, ?, ?)");
+    $insert_stmt->bind_param("sii", $comment, $uid, $rid);
+    
+    if ($insert_stmt->execute()) {
+        return true;
+    } else {
+        return false;
+    }
+
+    }
+    
 };
+
+$saveOGComment = function($comment, $uid, $rid, $conn){
+
+    return $GLOBALS["saveComment"]($comment, $uid, $rid, NULL, $conn);
+
+};
+
+// echo $saveComment("snkdn", 1, 2, $conn);
 
 
 
@@ -65,18 +104,33 @@ if(isset($_POST['func']) && $_POST['func'] == "get"){
 else if(isset($_POST['func']) && $_POST['func'] == "save"){
 
     $comment = $_POST['comment'];
-    $rid = $_POST['rid'];
-    $rcid  = $_POST['rcid'];
-    $uid = $_SESSION['uid'];
+    // var_dump($_POST);
+    $rcid  = ($_POST['rcid'] != "")? intval($_POST['rcid']) : NULL;
+    $uid = intval($_SESSION['uid']);
+    $rid = intval($_POST['rid']);
+
+    if($rid == 0){
+
+
+        if($saveComment($comment, $uid, $rid, $rcid, $conn)){
+            echo "success";
+        }
+        else
+        {echo "Fail";}
+
+        }   
+
+else{
+
+    if($saveOGComment($comment, $uid,  $rid, $conn)){
+        echo "success";
+       }
+       else
+       {echo "Fail";}
     
-
-
-    echo $saveComment($comment, $uid,  $rid,  $rcid, $conn);
+    }
 
 }
-
-// print_r($POST);
-
 
 
 

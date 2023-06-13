@@ -1,6 +1,18 @@
 $(document).ready(function() {
+
+
+  
+    $(".sub-comment").hide();
+    
     // Event delegation to handle click on dynamically added elements
     $(document).on('click', '.expand-comment', function() {
+
+      // $(".sub-comment").hide();
+
+      var par_div = $(this).parent().parent().children();
+// console.log(par_div[1].children[3].innerHTML);
+$(par_div[2]).toggle();
+par_div[1].children[3].innerHTML = (par_div[1].children[3].innerHTML.trim() == "expand_more" ? "expand_less" : "expand_more");
 
 
 
@@ -13,7 +25,7 @@ $(document).ready(function() {
       var rcid = parseInt($(this).data('rcid'));
       var rid = parseInt($(this).data('rid'));
       var cid = "sub-" + rcid;
-      console.log(this);
+      // console.log(this);
       $.ajax({
         url: '../php/commentsController.php',
         type: 'POST',
@@ -112,7 +124,7 @@ $(document).ready(function() {
             commentAbout.append(reply_btn, commentBy, commentOn, expand, reply_box);
             div_main.append(c_text, commentAbout);
   
-            var sub_c = $('<div>', { id: 'sub-' + comment.cid, class: 'sub-comment' });
+            var sub_c = $('<div>', { id: 'sub-' + comment.cid, class: 'sub-comment', style:"display:none"});
             div_main.append(sub_c);
   
             sub_comment_div.append(div_main);
@@ -144,25 +156,47 @@ $(document).ready(function() {
 
   function handleReply(event){
 
+    // saveComment("Hallelujah", 1, 1005, null);
+    var rep_box = event.target.parentNode;
+
+    comment = rep_box.children[0].value;
+    cid = parseInt(rep_box.id.split("-")[1]);
+    // console.log(comment, cid)
+    saveComment(comment, cid, 0);
+
         
 
   }
   
+
+  function saveOGComment(event){
+
+    var comm_box = event.target.parentNode;
+    var rid = comm_box.dataset.rid;
+    var comm = comm_box.children[1].value;
+    saveComment(comm, null, rid);
+
+
+
+  }
   
 
 
-  function saveComment(comment, uid, rid, rcid) {
+  function saveComment(comment, rcid, rid) {
+    // console.log(comment, rcid, rid);
     $.ajax({
-      url: 'saveComment.php', // Replace with the path to your PHP script
+      url: '../php/commentsController.php', // Replace with the path to your PHP script
       type: 'POST',
       data: {
         comment: comment,
-        uid: uid,
-        rid: rid,
-        rcid: rcid
+        rcid: rcid,
+        func: "save",
+        rid:rid
       },
       success: function(response) {
+        console.log(response);
         if (response === 'success') {
+         
           console.log('Comment saved successfully.');
         } else {
           console.log('Failed to save the comment.');
@@ -172,8 +206,13 @@ $(document).ready(function() {
         console.log('An error occurred while saving the comment.');
         console.log(error);
       }
-    });
+    })
+    
+    // location.reload();
+    
   }
+
+  
   
   
 
