@@ -24,7 +24,7 @@ $data = $getUser($_SESSION['uid'], $conn);
 
     <label class = "edit-profile-label" for="dob">Date of Birth:</label>
     <input class = "edit-profile-input" type="date" id="age" name="dob"
-    value = "<?php echo $data["age"]?>"
+    value = "<?php echo $data["dob"]?>"
     >
     <span class="login_signup-error-message" id="age-error"></span>
     

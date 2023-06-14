@@ -145,8 +145,11 @@ $data = $fetchSingleItem($recipe, $conn);
 
     }
 
-    
 
+
+
+    
+    if(isset($R_comments)):
    foreach($R_comments as $comment):
     
     
@@ -200,6 +203,7 @@ send
     </div>
 
     <?php endforeach;?>
+    <?php endif;?>
 
         
 

@@ -22,4 +22,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   header('Content-Type: application/json');
   echo json_encode($user);
 }
+
+$calcReputation = function($uid, $conn){
+  $stmt = "SELECT sum(rating)as s FROM recepie INNER JOIN ratings on ratings.rid = recepie.rid WHERE author = $uid;
+  ";
+  // echo $stmt;
+  $result = $conn->query($stmt);
+  if ($result->num_rows > 0){
+    return intval($result->fetch_assoc()["s"]);
+  }
+  else{
+    return 0;
+  }
+};
+
+// echo $calcReputation(2102, $conn);
+
 ?>

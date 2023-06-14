@@ -11,7 +11,7 @@ $(document).ready(function() {
 
       var par_div = $(this).parent().parent().children();
 // console.log(par_div[1].children[3].innerHTML);
-$(par_div[2]).toggle();
+$(par_div[2]).slideToggle();
 par_div[1].children[3].innerHTML = (par_div[1].children[3].innerHTML.trim() == "expand_more" ? "expand_less" : "expand_more");
 
 
@@ -208,7 +208,7 @@ par_div[1].children[3].innerHTML = (par_div[1].children[3].innerHTML.trim() == "
       }
     })
     
-    // location.reload();
+    location.reload();
     
   }
 
