@@ -1,20 +1,22 @@
 <?php
 session_start();
-if (isset($_POST['recipeName'])) {
-    print_r($_FILES);
-    $targetDirectory = "../uploads/recpie-images/";
+print_r($_FILES);
+if (isset($_POST['recipeName']) || isset($_POST['first_name']) ) {
+    
+    $targetDirectory = "../uploads/$path/";
     $extension = strtolower(pathinfo($_FILES["photo"]["name"], PATHINFO_EXTENSION));
     $uniqueName = uniqid() . '.' . $extension;
+    // echo $uniqueName;
     $targetFile = $targetDirectory . $uniqueName;
     $uploadOk = 1;
     $imageFileType = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
 
     // Check if the file is an actual image
-    $check = getimagesize($_FILES["photo"]["tmp_name"]);
-    if ($check === false) {
-        echo "File is not an image.";
-        $uploadOk = 0;
-    }
+    // $check = getimagesize($_FILES["photo"]["tmp_name"]);
+    // if ($check === false) {
+    //     echo "File is not an image.";
+    //     $uploadOk = 0;
+    // }
 
     // Check if the file already exists
     if (file_exists($targetFile)) {
@@ -41,5 +43,6 @@ if (isset($_POST['recipeName'])) {
             $imagePath = $targetFile;
             
     }
+    // $imagePath = $targetFile;
 }}
 ?>

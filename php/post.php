@@ -4,11 +4,6 @@
     <hr class = "post_separator_line" style="color: white; margin:5%;">
     <form id="post_recipeForm" method="post" action = "postRecepie.php" enctype="multipart/form-data">
       <div>
-        <label for="authorName" class = "post_label">Author's Name:</label>
-        <input type="text" id="authorName" name="authorName" class = "post_input">
-        <span class="error" id="authorNameError"></span>
-      </div>
-      <div>
         <label class = "post_label" for="recipeName">Recipe Name:</label>
         <input type="text" id="recipeName" name="recipeName" class = "post_input">
         <span class="error" id="recipeNameError"></span>

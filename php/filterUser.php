@@ -14,14 +14,69 @@ $getUser = function($id, $conn) {
   }
 };
 
+$isValidEmail= function($email, $conn){
+  $select_stmt = "SELECT * FROM `user` WHERE email = '" . $email . "';";
+  $result = $conn->query($select_stmt);
+  // echo $select_stmt;
+  if ($result->num_rows > 0) {
+    echo "false";
+  } else {
+    
+    echo "true";
+  }
+};
+
+$getUserByEmail = function($email, $conn){
+    $select_stmt = "SELECT * FROM `user` WHERE email = '" . $email . "';";
+    $result = $conn->query($select_stmt);
+    // echo $select_stmt;
+    if($result->num_rows > 0){
+    return $result->fetch_assoc();
+    }
+    else{
+      return [];
+    }
+    
+  };
+
+
+
+
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+  if(isset($_POST['id'])){
   $id = $_POST['id']; // Assuming the user ID is passed in the 'id' parameter
   $user = $getUser($id, $conn);
 
   // Return the user data as JSON
   header('Content-Type: application/json');
   echo json_encode($user);
-}
+  }
+  else if (isset($_POST['func']) && $_POST['func'] == 'email'){
+    // print_r($_POST);
+    $isValidEmail($_POST['email'], $conn);
+  }
+  else if (isset($_POST['func2']))
+    $data = $getUserByEmail($_POST['email'], $conn);
+    // print_r($_POST);
+    if (count($data) > 0) {
+      if (password_verify($_POST['password'], $data['password'])) {
+          // Password is correct
+          // Proceed with the login process
+          echo "";
+      } else {
+          // Password is incorrect
+          echo "Incorrect Email or Password.";
+      }
+  } else {
+      // No such email
+      echo "No such email";
+  }
+  
+      
+    
+  }
+
 
 $calcReputation = function($uid, $conn){
   $stmt = "SELECT sum(rating)as s FROM recepie INNER JOIN ratings on ratings.rid = recepie.rid WHERE author = $uid;
@@ -35,6 +90,8 @@ $calcReputation = function($uid, $conn){
     return 0;
   }
 };
+
+
 
 // echo $calcReputation(2102, $conn);
 

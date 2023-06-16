@@ -122,13 +122,14 @@ button.ghost {
 	background-color: #fff;
 	border-radius: 10px;
 	width: 100%;
-	height: 36rem;
+	height: 60rem;
 	position: relative;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	flex-wrap: wrap;
-	margin-top: 23.7vh;
+	/* margin-top: 23.7vh; */
+	max-height: 80%;
 }
 .form-container {
 	position: absolute;
@@ -227,7 +228,7 @@ button.ghost {
 	transform: translateX(-20%);
 }
 
-.Login-signup-container.right-panel-active .overlay-left {
+.Login-signup-container .right-panel-active .overlay-left {
 	transform: translateX(0);
 }
 
@@ -267,4 +268,8 @@ button.ghost {
 }
 #sign-up_lsup_btn{
 	margin-top: 6%;
+}
+
+.overlay-panel{
+	margin-left: 9vw;
 }
