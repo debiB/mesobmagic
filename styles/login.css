@@ -256,6 +256,7 @@ button.ghost {
 .login_signup-error-message{
 	color:red;
 	font-size: 12px;
+	display: block;
 }
 #preview_image{
 	display: none;

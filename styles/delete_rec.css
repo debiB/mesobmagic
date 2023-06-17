@@ -24,6 +24,19 @@
 .navbar_container {
       width: 100%;
 }
+.del-form-field{
+  display: flex;
+    align-items: center;
+    margin-right: auto;
+    margin-left:auto;
+    border: 1px solid #ccc;
+    width: 50%;
+    margin-top: 5%;
+    background-color: white;
+    border-radius: 2rem;
+    box-shadow: 0 1px 6px rgba(32, 33, 36, 0.28);
+}
+
 .delete-recipie_text{
   margin-top:15%;
   font-family: "Encode Sans Semi Condensed", sans-serif;
@@ -53,7 +66,11 @@
     font-size: 16px;
     background-color: transparent;
     outline:none;
+    margin-bottom: 0;
+    margin-left: 10px;
   }
+
+  
 
   .delete-search-button {
     background-color: transparent;
@@ -62,13 +79,18 @@
     padding: 8px;
     cursor: pointer;
   }
+
+  .delete-search-button:active {
+    background-color: #DD7230;
+    color: white;
+  }
   
  
   .delete-recipe-card {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: 7%;
+    margin-top: 2%;
     width: 70%; 
     box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
     padding: 2%;
@@ -92,6 +114,15 @@
 
   .delete-recipe-name {
     margin: 0;
+    
+  }
+  .delete-recipe-name > a {
+    margin: 0;
+    text-decoration: none;
+    color: black  ;
+  }
+  .delete-recipe-name > a:hover {
+    color:orange;
   }
 
   .delete-recipe-date {
@@ -107,4 +138,12 @@
     background-color: transparent;
     color: black;
     border: none;
+    cursor: pointer;
+    border: 1px;
   }
+  .delete-recipe-buttons button:hover{
+    border: 1px solid black;
+  }
+
+
+  

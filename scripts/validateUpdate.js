@@ -88,20 +88,20 @@ function validateFirstName() {
   }
   
   // Function to validate the Age field
-  function validateAge() {
-	const ageInput = document.getElementById('age');
-	const ageError = document.getElementById('age-error');
-	const ageValue = parseInt(ageInput.value);
+  function validateDob() {
+	const dobInput = document.getElementById('dob');
+	const dobError = document.getElementById('dob-error');
+	const dobValue = parseInt(dobInput.value);
   
-	if (isNaN(ageValue)) {
-	  ageError.innerHTML = 'Age is required';
+	if (isNaN(dobValue)) {
+	  dobError.innerHTML = 'Date of Birth is required';
 	  return false;
-	}else if(ageValue <= 10){
-		ageError.innerHTML = 'Age must be greater than 10';
+	}else if((new Date(dobValue))>= new Date("2013-01-01") ){
+		dobError.innerHTML = 'You must be born after 2013-01-01 to use this site.' ;
 		return false;
 	}
 	 else {
-	  ageError.innerHTML = '';
+	  dobError.innerHTML = '';
 	  return true;
 	}
   }
@@ -146,6 +146,7 @@ function validateFirstName() {
         return false;
       } else {
         photoError.textContent = ""; // Clear any previous error message
+
         return true;
       }
 
@@ -175,10 +176,10 @@ function validateCountry() {
 	const isValidEmail = validateEmail();
 	const isValidPassword = validatePassword();
 	const isValidConfirmPassword = validateConfirmPassword();
-	const isValidAge = validateAge();
+	const isValidDob = validateDob();
 	const isValidJobTitle = validateJobTitle();
 	const isValidCountry = validateCountry();
-    const isValidPhoto = photo();
+    const isValidPhoto = true;
 
     console.log(isValidPhoto)
   
@@ -188,12 +189,12 @@ function validateCountry() {
 	  isValidEmail &&
 	  isValidPassword &&
 	  isValidConfirmPassword &&
-	  isValidAge &&
+	  isValidDob &&
 	  isValidJobTitle &&
 	  isValidCountry &&
       isValidPhoto
 	) {
-	  alert("Update successful.")
+	//   alert("Update successful.")
 	  return true;
 	} else {
 	//   document.getElementById('success-message').innerHTML = '';
@@ -204,5 +205,35 @@ function validateCountry() {
   // Event listener for the Sign Up form submission
   document.getElementById('edit-form-submit').addEventListener('click', function (event) {
 	// event.preventDefault(); // Prevent form submission
+		if(validateEditForm()){
+
+			var formData = new FormData();
+			formData.append('first_name', $('#first-name').val());
+			formData.append('last_name', $('#last-name').val());
+			formData.append('email', $('#email').val());
+			formData.append('pass', $('#password').val());
+			formData.append('photo', $('#profileImage')[0].files[0]);
+			formData.append('dob', $('#dob').val());
+			formData.append('job', $('#job-title').val());
+			formData.append('country', $('#country').val());
+			formData.append('withPass', $('#chpass').css('display') != "none");
+
+			$.ajax({
+				url: '../php/editUser.php',
+				type: 'POST',
+				data: formData,
+				processData: false,
+				contentType: false,
+				success: function(response) {
+				console.log(response);
+				},
+				error: function(xhr, status, error) {
+				console.log('An error occurred while saving the data.');
+				console.log(error);
+				}
+			});
+
+			
+		}
    
   });

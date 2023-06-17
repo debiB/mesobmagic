@@ -2,7 +2,7 @@
     session_start();
     
     include("/opt/lampp/htdocs/mesobmagic/inc/config/dbconn.php");
-
+    include("/opt/lampp/htdocs/mesobmagic/php/filterRecepie.php");
 
  
 
@@ -115,23 +115,27 @@
     };
 
     $deletePost = function ($rid, $conn) {
-        $del_stmt = "DELETE FROM `recepie` WHERE rid = ?";
-    
-        $stmt = $conn->prepare($del_stmt);
-    
-        if (!$stmt) {
-            return false;
+        $del_stmt = "DELETE FROM `recepie` WHERE rid = $rid";
+        print_r($rid);
+        $img = $GLOBALS['fetchSingleItem']($rid, $conn)['image_url'];
+        
+        if (unlink($img)) {
+            echo "Image deleted successfully!";
+        } else {
+            echo "Failed to delete image.";
         }
-    
-        $stmt->bind_param("i", $rid);
-    
-        $result = $stmt->execute();
-    
-        if ($result) {
+
+
+        $stmt = $conn->query($del_stmt);
+
+        if ($stmt) {
+            echo "Recipe deleted successfully!";
             return true;
         } else {
+            echo "Failed to delete recipe.";
             return false;
         }
+
     };
 
     
@@ -174,8 +178,15 @@
 
             $updatePost($input, $conn);
         }
+       
         // print_r($input);
         
+    }
+
+    else if (isset($_POST['function']) && $_POST['function'] == "delete"){
+        $rid = intval($_POST['rid']);
+        if($deletePost($rid, $conn))
+            echo "deleted";
     }
 
 

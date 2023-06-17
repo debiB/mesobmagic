@@ -23,10 +23,10 @@ $data = $getUser($_SESSION['uid'], $conn);
     <span class="login_signup-error-message" id="last-name-error"></span>
 
     <label class = "edit-profile-label" for="dob">Date of Birth:</label>
-    <input class = "edit-profile-input" type="date" id="age" name="dob"
+    <input class = "edit-profile-input" type="date" id="dob" name="dob"
     value = "<?php echo $data["dob"]?>"
     >
-    <span class="login_signup-error-message" id="age-error"></span>
+    <span class="login_signup-error-message" id="dob-error"></span>
     
 
     <label class = "edit-profile-label" for="email">Email:</label>
@@ -57,19 +57,19 @@ $data = $getUser($_SESSION['uid'], $conn);
 
 
     <label class = "edit-profile-label" for="password">New Password:</label>
-    <input class = "edit-profile-input" type="password" id="password" name="password">
+    <input class = "edit-profile-input" type="password" id="password" name="password"><br>
     <span class="login_signup-error-message" id="password-error"></span>
 
 
     <label class = "edit-profile-label" for="cpassword"> Confirm Password:</label>
-    <input class = "edit-profile-input" type="password" id="confirm-password" name="cpassword">
+    <input class = "edit-profile-input" type="password" id="confirm-password" name="cpassword"><br>
     <span class="login_signup-error-message" id="confirm-password-error"></span>
 
     </div>
 
     <div class="edit-photo">
     
-    <img id="imagePreview" src=" https://picsum.photos/600/600" alt="Image Preview"  width="200px">
+    <img id="imagePreview" src="<?php echo $data["avatar"]?>" alt="Image Preview"  width="200px">
     </div>
 
     <label class = "edit-profile-label" for="profileImage">Profile Image (< 2MB):</label>

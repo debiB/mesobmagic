@@ -184,6 +184,35 @@ $getAuthor = function($id, $conn){
 
 };
 
+$getByAuthorId = function($uid, $conn){
+  $filter_stmt = "SELECT *, COUNT(`rating`) as count, AVG(`rating`) as avg FROM `recepie` LEFT JOIN `ratings` ON `ratings`.`rid` = `recepie`.`rid` WHERE `recepie`.`author` = $uid GROUP BY `recepie`.`rid`;";
+
+    $result = $conn->query($filter_stmt);
+    $ans = [];
+    if ($result->num_rows > 0) {
+      while($row = $result->fetch_assoc()){
+         $ans[] = $row;
+      }
+    }
+    return $ans;
+};
+
+$getByAuthorIdAndName = function($uid, $name, $conn){
+  $filter_stmt = "SELECT *, COUNT(`rating`) as count, AVG(`rating`) as avg FROM `recepie` LEFT JOIN `ratings` ON `ratings`.`rid` = `recepie`.`rid` WHERE `recepie`.`author` = $uid AND recipe_name LIKE '%$name%' GROUP BY `recepie`.`rid`;";
+
+  // echo $filter_stmt;
+
+    $result = $conn->query($filter_stmt);
+    $ans = [];
+    if ($result->num_rows > 0) {
+      while($row = $result->fetch_assoc()){
+         $ans[] = $row;
+      }
+    }
+    return $ans;
+};
+
+
 $fetchByMultipleIds = function($input, $conn){
   $res = [];
   foreach($input as $item){
