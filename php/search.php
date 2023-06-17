@@ -41,11 +41,14 @@ if (isset($_GET['function']) && isset($_GET['input'])) {
   $fun = $functions[$_GET['function']];
   $arg = $_GET['input'];
   $result = $fun($arg, $conn);
+
+  if(!empty($result)){
   if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
       $ans[] = $row;
     }
   }
+}
 } else {
   if (!empty($viewedRecipes)) {
     $ans = $fetchByMultipleIds(array_slice($viewedRecipes, -10), $conn);
@@ -53,11 +56,13 @@ if (isset($_GET['function']) && isset($_GET['input'])) {
     //   $ans[] = $row;
     //}
   }
+
 }
+
 
 ?>
 <?php if ((isset($_GET['function']) && isset($_GET['input']))): ?>
-  <p class="search-info"><?php echo "{$result->num_rows} recipes found with {$_GET["function"]} : {$_GET["input"]}"; ?></p>
+  <p class="search-info"><?php echo count($ans) . " recipes found with {$_GET["function"]} : {$_GET["input"]}"; ?></p>
 
 <?php else:?>
   <p class="search-info"><?php echo "Your most recent visits." ?></p>

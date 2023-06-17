@@ -73,11 +73,16 @@ $fetchByAuthor = function($author, $conn){
     $author = explode(" ", ucwords($author));
     $author_id_list = $GLOBALS['getAuthorIds']($author[0], $author[1], $conn);
     print_r($author_id_list);
+    if($author_id_list == ""){
+      return [];
+    }
+    else{
+      $filter_stmt = "SELECT `recepie`.`rid`, `recipe_name`, `image_url`, `author`, AVG(`rating`) as rating FROM `recepie` LEFT JOIN `ratings` ON `ratings`.`rid` = `recepie`.`rid` WHERE `author` in ($author_id_list) GROUP BY `recepie`.`rid`;";
+    }
+      $result = $conn->query($filter_stmt);
 
-    $filter_stmt = "SELECT `recepie`.`rid`, `recipe_name`, `image_url`, `author`, AVG(`rating`) as rating FROM `recepie` LEFT JOIN `ratings` ON `ratings`.`rid` = `recepie`.`rid` WHERE `author` in ($author_id_list) GROUP BY `recepie`.`rid`;";
-    $result = $conn->query($filter_stmt);
-
-    return $result;
+      return $result;
+  
     // if ($result->num_rows > 0) {
     //   while($row = $result->fetch_assoc()) {
     //     $ans[] = $row;

@@ -60,6 +60,8 @@ function submitForm() {
 
   // Send the form data
   xhr.send(formData);
+  alert("your recipie has been saved successfuly")
+  window.location = "../php/search.php"
 }
 
 function submitUpdateForm() {
