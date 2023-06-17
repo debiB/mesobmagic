@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Delete recpie</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="../styles/delete_rec.css">
+</head>
+<body>
+  <div class = "nav_del_container">
+    <div class="navbar_container">
+      <object data="nav.html" id="imported-content" type="text/html"></object>
+    </div>
+    <h1 class = "delete-recipie_text">- Delete recpie</h1>
+    <div class="delete-search-bar">
+      <input type="text" class="delete-search-input" placeholder="Search...">
+      <a href = "#"><button class="delete-search-button"><i class="material-icons">search</i></button></a>
+    </div>
+    <div class="delete-recipe-card">
+      <div class="delete-imgtxt">
+        <img src="https://i2.wp.com/www.downshiftology.com/wp-content/uploads/2019/07/Falafel-7.jpg" class="delete-recipe-image">
+        <p class="delete-recipe-name" style="text-align: right; font-size: 30px;">Recipe Name</p>
+      </div>
+      <div class="delete-recipe-date">Published on June 12, 2023</div>
+      <div class="delete-recipe-buttons">
+        <a href = "#"><button id = "delete_recpie_button"><i class="material-icons" onclick = "deleteConfirm()">delete</i></button></a>
+        <script>
+          function deleteConfirm(){
+            window.confirm("Are you sure you want to delete your recpie?");
+          } 
+        </script>
+        <a href = "#"><button><i class="material-icons">edit</i></button></a>
+      </div>
+    </div>
+  </body>
+  </html>
