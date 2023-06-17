@@ -5,7 +5,10 @@ $fetchByIngredient =  function($ing, $conn){
 
     $ans = array();
  
-    $filter_stmt = "SELECT `recepie`.`rid`, `recipe_name`, `image_url`, `author`, AVG(`rating`) as rating FROM `recepie` LEFT JOIN `ratings` ON `ratings`.`rid` = `recepie`.`rid`  WHERE `ingredients` LIKE '% _!" . $ing . "_!%'GROUP BY `ratings`.`rid`;";
+    $filter_stmt = "SELECT * FROM `recepie` LEFT JOIN `ratings` ON `ratings`.`rid` = `recepie`.`rid` WHERE `ingredients` LIKE '%_!" . $ing ."_!%' GROUP BY `ratings`.`rid`;
+    ";
+    
+    // -- // echo $filter_stmt;
 
 
     $result = $conn->query($filter_stmt);
@@ -26,6 +29,7 @@ $fetchByIngredient =  function($ing, $conn){
 $fetchByCuisineType = function($cus, $conn){
  
     $ans = array();
+    $cus  = ucwords($cus);
     $filter_stmt = "SELECT `recepie`.`rid`, `recipe_name`, `image_url`, `author`, AVG(`rating`) as rating FROM `recepie` LEFT JOIN `ratings` ON `ratings`.`rid` = `recepie`.`rid` WHERE `cuisine` = '{$cus}' GROUP BY `recepie`.`rid`;";
 
     $result = $conn->query($filter_stmt);
@@ -42,11 +46,35 @@ $fetchByCuisineType = function($cus, $conn){
     
 };
 
+$getAuthorIds = function($fname, $lname, $conn){
+  $filter_stmt = "SELECT `uid`  FROM `user` WHERE `first_name` = '$fname' AND `last_name` = '$lname';";
+  $result = $conn->query($filter_stmt);
+
+  $ans = [];
+
+  if($result->num_rows > 0){
+    while($row = $result->fetch_assoc()){
+      $ans[] = $row; 
+  }
+}
+
+
+    $s = [];
+    foreach($ans as $uid){
+      $s[] = strval($uid['uid']);
+    }
+    // print_r(join(",", $s));
+
+    return join(",", $s);
+};
+
 $fetchByAuthor = function($author, $conn){
  
-    $ans = array();
-    $filter_stmt = "SELECT `recepie`.`rid`, `recipe_name`, `image_url`, `author`, AVG(`rating`) as rating FROM `recepie` LEFT JOIN `ratings` ON `ratings`.`rid` = `recepie`.`rid` WHERE `author` = '{$author}' GROUP BY `recepie`.`rid`;";
+    $author = explode(" ", ucwords($author));
+    $author_id_list = $GLOBALS['getAuthorIds']($author[0], $author[1], $conn);
+    print_r($author_id_list);
 
+    $filter_stmt = "SELECT `recepie`.`rid`, `recipe_name`, `image_url`, `author`, AVG(`rating`) as rating FROM `recepie` LEFT JOIN `ratings` ON `ratings`.`rid` = `recepie`.`rid` WHERE `author` in ($author_id_list) GROUP BY `recepie`.`rid`;";
     $result = $conn->query($filter_stmt);
 
     return $result;
@@ -154,6 +182,14 @@ $getAuthor = function($id, $conn){
     }
 
 
+};
+
+$fetchByMultipleIds = function($input, $conn){
+  $res = [];
+  foreach($input as $item){
+    $res[] = $GLOBALS['fetchSingleItem']($item, $conn);
+  }
+  return $res;
 };
 
 $popularN = function($n, $conn){

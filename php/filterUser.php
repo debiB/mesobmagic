@@ -2,7 +2,6 @@
 // filterUser.php
 
 include "/opt/lampp/htdocs/mesobmagic/inc/config/dbconn.php";
-
 $getUser = function($id, $conn) {
   $select_stmt = "SELECT * FROM `user` WHERE uid = " . $id . ";";
   $result = $conn->query($select_stmt);
@@ -56,7 +55,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // print_r($_POST);
     $isValidEmail($_POST['email'], $conn);
   }
-  else if (isset($_POST['func2']))
+  else if (isset($_POST['func2'])){
     $data = $getUserByEmail($_POST['email'], $conn);
     // print_r($_POST);
     if (count($data) > 0) {
@@ -72,6 +71,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       // No such email
       echo "No such email";
   }
+}
   
       
     
