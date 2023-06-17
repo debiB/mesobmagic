@@ -5,7 +5,7 @@ $fetchByIngredient =  function($ing, $conn){
 
     $ans = array();
  
-    $filter_stmt = "SELECT * FROM `recepie` LEFT JOIN `ratings` ON `ratings`.`rid` = `recepie`.`rid` WHERE `ingredients` LIKE '%_!" . $ing ."_!%' GROUP BY `ratings`.`rid`;
+    $filter_stmt = "SELECT * FROM `recepie` LEFT JOIN `ratings` ON `ratings`.`rid` = `recepie`.`rid` WHERE `ingredients` LIKE '%_!" . $ing ."_!%' OR `ingredients` LIKE '" . $ing ."_!%' OR `ingredients` LIKE '%_!" . $ing ."' GROUP BY `ratings`.`rid`;
     ";
     
     // -- // echo $filter_stmt;

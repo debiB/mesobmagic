@@ -116,7 +116,8 @@
 
     $deletePost = function ($rid, $conn) {
         $del_stmt = "DELETE FROM `recepie` WHERE rid = $rid";
-        print_r($rid);
+
+        print_r($del_stmt);
         $img = $GLOBALS['fetchSingleItem']($rid, $conn)['image_url'];
         
         if (unlink($img)) {

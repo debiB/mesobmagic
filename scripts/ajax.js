@@ -75,6 +75,8 @@ function submitUpdateForm() {
       if (xhr.status === 200) {
         // Request successfu
         console.log(xhr.responseText);
+        alert("your recipie has been saved successfuly")
+        window.location = "../php/search.php"
       } else {
         // Request failed
         console.log(xhr.status);
@@ -87,6 +89,7 @@ function submitUpdateForm() {
 
   // Send the form data
   xhr.send(formData);
+  
 }
 
 

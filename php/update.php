@@ -1,7 +1,7 @@
 <?php include  "/opt/lampp/htdocs/mesobmagic/inc/header.php";
 include "/opt/lampp/htdocs/mesobmagic/php/filterRecepie.php";
 
-$rid = intval($_GET['rid']);
+$rid = intval($_POST['rid']);
 $data =  $fetchSingleItem($rid, $conn);
 $ingredients = explode('_!', $data['ingredients']);
 $steps = explode('_!', $data['instructions']);

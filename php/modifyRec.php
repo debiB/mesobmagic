@@ -5,16 +5,19 @@ include "/opt/lampp/htdocs/mesobmagic/inc/header.php";
 include "/opt/lampp/htdocs/mesobmagic/php/filterRecepie.php";
 ?>
 
-<?php if ($_SERVER['REQUEST_METHOD'] == "POST" &&   !isset($_POST['name'])):?>
+<?php if (!isset($_POST['name'])):?>
 
 <div class="nav_del_container">
 <h1 class="delete-recipie_text">- Delete recipe</h1>
-<div class="delete-search-bar">
   <form class = "del-form-field" action="<?php echo $_SERVER['PHP_SELF']?>" method="post">
     <input type="text" name="name" class="delete-search-input" id="search-bar" placeholder="Search...">
     <a><button class="delete-search-button"><i class="material-icons">search</i></button></a>
   </form>
-</div>
+<!-- <h1 class="delete-recipie_text">- Delete recpie</h1>
+  <form class = "del-form-field" action="<?php echo $_SERVER['PHP_SELF']?>" method="post">
+    <input type="text" name="name" class="delete-search-input" id="search-bar" placeholder="Search...">
+    <a><button  class="delete-search-button"><i class="material-icons">search</i></button></a>
+  </form> -->
 
 
   <p class="unfiltered-list"> Your Posts </p>
@@ -57,7 +60,7 @@ include "/opt/lampp/htdocs/mesobmagic/php/filterRecepie.php";
                                                       echo "Invalid date format";
                                                     } ?></div>
       <div class="delete-recipe-buttons">
-        <a href="#"><button id="delete_recpie_button"
+        <a href="#"><button id="delete_recpie_button" data-rid="<?php echo $post['rid'];?>"
         ><i data-rid = "<?php echo $post['rid'];?>" class="material-icons" onclick="deleteConfirm()">delete</i></button></a>
         <script>
           function deleteConfirm() {
@@ -67,13 +70,13 @@ include "/opt/lampp/htdocs/mesobmagic/php/filterRecepie.php";
             }
           }
         </script>
-        <a href="update.php?rid=<?php echo $post['rid'];?>"><button><i class="material-icons">edit</i></button></a>
+        <a><button><i data-rid = "<?php echo $post['rid'];?>" onclick = "handleEvent(event)" class="material-icons">edit</i></button></a>
       </div>
     </div>
   <?php endforeach; ?>
 </div>
-<?php else:?>
-
+<?php endif;?>
+<?php if (($_SERVER['REQUEST_METHOD'] == "POST") && isset($_POST['name'])):?>
   <?php $name = $_POST['name'];
   
   ?>
@@ -124,7 +127,7 @@ include "/opt/lampp/htdocs/mesobmagic/php/filterRecepie.php";
                                                       echo "Invalid date format";
                                                     } ?></div>
       <div class="delete-recipe-buttons">
-        <a href="#"><button id="delete_recpie_button"
+        <a href="#"><button id="delete_recpie_button" data-rid="<?php echo $post['rid'];?>"
         ><i data-rid = "<?php echo $post['rid'];?>" class="material-icons" onclick="deleteConfirm()">delete</i></button></a>
         <script>
           function deleteConfirm() {
@@ -134,7 +137,7 @@ include "/opt/lampp/htdocs/mesobmagic/php/filterRecepie.php";
             }
           }
         </script>
-        <a href="update.php?rid=<?php echo $post['rid'];?>"><button><i class="material-icons">edit</i></button></a>
+        <a><button><i data-rid = "<?php echo $post['rid'];?>" onclick = "handleEvent(event)" class="material-icons">edit</i></button></a>
       </div>
     </div>
   <?php endforeach; ?>
