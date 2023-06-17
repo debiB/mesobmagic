@@ -51,28 +51,28 @@ const testimonials = [
   });
   const cuisines = [
     {
-      image: 'https://i2.wp.com/www.downshiftology.com/wp-content/uploads/2019/07/Falafel-7.jpg',
-      name: 'Sushi'
+      image: 'https://st.depositphotos.com/1328914/3359/i/950/depositphotos_33590291-stock-photo-mexican-food.jpg',
+      name: 'Mexican'
     },
     {
-      image: 'https://i2.wp.com/www.downshiftology.com/wp-content/uploads/2019/07/Falafel-7.jpg',
-      name: 'Kimchi'
+      image: 'https://c8.alamy.com/comp/HXWP33/italian-food-spaghetti-al-tonno-tuna-fish-with-fresh-tomatoes-HXWP33.jpg',
+      name: 'Italian'
     },
     {
-      image: 'https://i2.wp.com/www.downshiftology.com/wp-content/uploads/2019/07/Falafel-7.jpg',
-      name: 'Shawarma'
+      image: 'https://img.grouponcdn.com/iam/3xvYpEYRPCUdJsCGTv2JGtUg5LMg/3x-2048x1229/v1/t600x362.jpg',
+      name: 'Chinese'
     },
     {
-      image: 'https://i2.wp.com/www.downshiftology.com/wp-content/uploads/2019/07/Falafel-7.jpg',
-      name: 'Mac and Cheese'
+      image: 'https://c.ndtvimg.com/2020-01/3ptkv9qo_egg-paratha_625x300_23_January_20.jpg',
+      name: 'Indian'
     },
     {
-      image: 'https://i2.wp.com/www.downshiftology.com/wp-content/uploads/2019/07/Falafel-7.jpg',
-      name: 'Lasagna'
+      image: 'https://media-cdn.tripadvisor.com/media/photo-m/1280/1c/5d/d3/0b/200g.jpg',
+      name: 'American'
     },
     {
-      image: 'https://i2.wp.com/www.downshiftology.com/wp-content/uploads/2019/07/Falafel-7.jpg',
-      name: 'Tacos'
+      image: 'https://insanelygoodrecipes.com/wp-content/uploads/2021/07/Homemade-Ethiopian-Doro-Wat-Chicken-And-Egg-with-Spicy-Sauce.jpg',
+      name: 'Ethiopian'
     }
   ];
 
@@ -83,7 +83,8 @@ const testimonials = [
 
     cuisineCard.innerHTML = `
       <img src="${image}">
-      <p>${name}</p>
+      <p><a href="search.php?input=${name}&function=cusine">${name}</a></p>
+      
     `;
 
     return cuisineCard;
@@ -96,3 +97,38 @@ const testimonials = [
     const cuisineCard = generateCuisineCard(cuisine.image, cuisine.name);
     cuisineContainer.appendChild(cuisineCard);
   });
+
+  document.getElementById("home_contact-us").addEventListener("submit", function(event) {
+    event.preventDefault(); // Prevent the form from submitting normally
+  
+    var formData = new FormData();
+    var feedback = document.getElementById("home_contact-us_message").value;
+    var email = document.getElementById("home_contact-us_email").value;
+  
+    formData.append("email", email);
+    formData.append("feedback", feedback);
+  
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", "../php/feedback.php", true);
+  
+    xhr.onload = function() {
+      if (xhr.status === 200) {
+        console.log(xhr.response);
+        console.log("Feedback submitted successfully!");
+        // Perform any desired actions, e.g., display a success message
+        alert("Feedback submitted successfully!");
+        location.reload();
+      } else {
+        console.log("Failed to submit feedback.");
+        // Handle the error case, e.g., display an error message
+      }
+    };
+  
+    xhr.onerror = function() {
+      console.log("An error occurred during the request.");
+      // Handle any network or server errors
+    };
+  
+    xhr.send(formData);
+  });
+  

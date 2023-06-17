@@ -227,16 +227,18 @@ $fetchByMultipleIds = function($input, $conn){
 };
 
 $popularN = function($n, $conn){
+  $ans = [];
     $filter_stmt = "SELECT *, COUNT(`rating`) as count, AVG(`rating`) as avg FROM `recepie` LEFT JOIN `ratings` ON `ratings`.`rid` = `recepie`.`rid` GROUP BY `recepie`.`rid` ORDER BY rating DESC LIMIT $n;
     ";
+    // echo $filter_stmt;
     $result = $conn->query($filter_stmt);
 
     if ($result->num_rows > 0) {
-      return $result->fetch_assoc();
+      while($row =  $result->fetch_assoc())
+      $ans[] = $row;
 
-    } else {
-      return [];
-    }
+    } 
+    return $ans;
 };
 
 
