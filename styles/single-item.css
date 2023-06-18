@@ -76,7 +76,7 @@ body{
 }
 
 .single-item-rating > .single-count {
-    font-size: 22px;
+    font-size: 3vw;
     font-family: "Encode Sans Semi Condensed", sans-serif;
     margin-left: 15px;
     
@@ -84,7 +84,7 @@ body{
 
 
 #single-stars img{
-    width: 20px;
+    width: 4vw;
     margin-left: 7px;
 }
 #single-stars img:nth-child(1){
@@ -176,7 +176,7 @@ body{
   }
 
   .sub-comment{
-    width: 80%;
+    width: 95%;
     margin-left: auto;
     border-left: 1px solid;
     
@@ -189,8 +189,19 @@ body{
 
 .reply-box{
   margin-top: 20px;
+  display: flex;
+  justify-content: right;
+  margin-right: 17px;
+  column-gap: 9px;
 }
 
+.send-symb:active{
+  color: white;
+  background-color: orange;
+}
+.submit-comment{
+  width: 9vw;
+}
 
 
  
@@ -213,12 +224,19 @@ body{
     }
   
     #single-stars img, #rate-stars img {
-      width: 20px;
+      width: 3vw;
     }
   
-    #star-rating .star {
+    /* #star-rating .star {
       font-size: 40px;
+    } */
+    .submit-comment{
+      width: 20vw;
     }
+  }
+
+  .user-comment textarea{
+    width: 60vw;
   }
 
   @media (min-width: 1025px) {
@@ -240,6 +258,72 @@ body{
       font-size: 50;
     }
   }
+
+
+  @media (max-width: 608px) and (min-width:400px) {
+    .top-single-item {
+      width: 80%;
+      padding: 3vh;
+      padding-left: 100px;
+      padding-left: 3vw;
+    }
+  
+    .single-item-img > img {
+      width: 22em;
+    }
+  
+    #single-stars img, #rate-stars img {
+      width: 20px;
+    }
+  
+    #star-rating .star {
+      font-size: 50;
+    }
+    .submit-comment{
+      width: 50vw;
+      /* margin:auto; */
+      margin-bottom: 10px;
+    }
+    .single-item-title{
+      font-size: 7vw;
+    }
+    
+  }
+  @media (max-width: 400px) {
+    .top-single-item {
+      width: 80%;
+      padding: 3vh;
+      padding-left: 100px;
+      padding-left: 3vw;
+      
+    }
+
+    .single-item-title{
+      font-size: 10vw;
+    }
+  
+    .single-item-img > img {
+      width: 52vw;
+    }
+  
+    #single-stars img, #rate-stars img {
+      width: 20px;
+    }
+  
+    
+    .submit-comment{
+      width: 50vw;
+      /* margin:auto; */
+      margin-bottom: 10px;
+    }
+    #star-rating{
+      width: 73vw;
+    }
+    
+  }
+
+
+  
   
  
 

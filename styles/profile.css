@@ -108,7 +108,7 @@
   padding-top: 40px;
   padding-bottom: 40px;
   background-color: #f2f2f2;
-  padding-left: 200px;
+  padding-left: 13vw;
   padding-right: 200px;
   border-radius: 10px;
   border: solid 2px;
@@ -143,6 +143,11 @@
   border-radius: 10px;
   margin-bottom: 2%;
   margin-top: 2vh;
+  width: 43vw;
+}
+
+.edit-profile-input, #changePasswordButton{
+  width: 43vw;
 }
 
 .edit-profile-submit {
@@ -152,6 +157,7 @@
   border: none;
   border-radius: 4px;
   cursor: pointer;
+  width: 43vw;
 }
 
 label [for = "profileImage"]{
@@ -173,11 +179,32 @@ label [for = "profileImage"]{
 {
   display: none;
 }
+.post-header{
+  /* width: 20vw; */
+  font-size: 30px;
+}
 }
 
-@media ((max-width:720px)) {
+@media ((max-width:500px)) {
   
- .profile-title{
-  font-size: 4vw;
+ *{
+  font-size: 12px;
+
+ }
+ .edit-profile-label{
+  width: 20vw;
+  margin-top: 8px;
+ }
+ #changePasswordButton{
+  margin-top:15px!important;
+  margin-bottom: 8px;
+
+ }
+ .post-header{
+  font-size: 25px;
  }
 }
+
+/* @media ((max-width:1088) and (min-width:)) {
+  
+} */

@@ -7,12 +7,16 @@ $(document).ready(function() {
     // Event delegation to handle click on dynamically added elements
     $(document).on('click', '.expand-comment', function() {
 
-      // $(".sub-comment").hide();
+      // $(".sub-comment").toggle();
+      // $(".sub-comment").toggle();
 
+
+      
       var par_div = $(this).parent().parent().children();
+      
 // console.log(par_div[1].children[3].innerHTML);
-$(par_div[2]).slideToggle();
-par_div[1].children[3].innerHTML = (par_div[1].children[3].innerHTML.trim() == "expand_more" ? "expand_less" : "expand_more");
+// $(par_div[2]).slideToggle();
+
 
 
 
@@ -25,6 +29,7 @@ par_div[1].children[3].innerHTML = (par_div[1].children[3].innerHTML.trim() == "
       var rcid = parseInt($(this).data('rcid'));
       var rid = parseInt($(this).data('rid'));
       var cid = "sub-" + rcid;
+      if(par_div[2].style.display == "none"){
       // console.log(this);
       $.ajax({
         url: '../php/commentsController.php',
@@ -126,6 +131,8 @@ par_div[1].children[3].innerHTML = (par_div[1].children[3].innerHTML.trim() == "
   
             var sub_c = $('<div>', { id: 'sub-' + comment.cid, class: 'sub-comment', style:"display:none"});
             div_main.append(sub_c);
+
+            
   
             sub_comment_div.append(div_main);
 
@@ -137,8 +144,21 @@ par_div[1].children[3].innerHTML = (par_div[1].children[3].innerHTML.trim() == "
         }
 
       }
-      );
-
+      );}
+      function sleep(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+      }
+      
+      async function delayedCodeExecution() {
+        // console.log("Before the delay");
+        await sleep(500); // Pause the code execution for 2 seconds
+        $(par_div[2]).slideToggle();
+        par_div[1].children[3].innerHTML = (par_div[1].children[3].innerHTML.trim() == "expand_more" ? "expand_less" : "expand_more");
+      }
+      
+      delayedCodeExecution();
+      
+            
 
     });
 
@@ -149,8 +169,8 @@ par_div[1].children[3].innerHTML = (par_div[1].children[3].innerHTML.trim() == "
     
     // Rest of your code here
     var commid = "comm-"+event.target.dataset.comm_id;
-    $(".reply-box").hide();
-    $("#" + commid).show();
+    // $(".reply-box").hide();
+    $("#" + commid).slideToggle();
     
   }
 

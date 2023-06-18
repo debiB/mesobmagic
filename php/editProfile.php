@@ -36,7 +36,7 @@ $data = $getUser($_SESSION['uid'], $conn);
     <span class="login_signup-error-message" id="email-error"></span>
 
     <label class="edit-profile-label" for="country">Country:</label>
-<select class="edit-profile-label" id="country" name="country">
+<select class="edit-profile-input" id="country" name="country">
   <option value="USA" <?php echo ($data["country"] == "USA") ?  "selected":""; ?>>USA</option>
   <option value="Canada" <?php echo ($data["country"] == "Canada") ?  "selected":""; ?>>Canada</option>
   <option value="Ethiopia" <?php echo ($data["country"] == "Ethiopia") ?  "selected":""; ?>>Ethiopia</option>
