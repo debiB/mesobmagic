@@ -274,3 +274,128 @@ button.ghost {
 .overlay-panel{
 	margin-left: 9vw;
 }
+
+@media (max-width: 530px) {
+.lsup-age_container{
+	flex-direction: column;
+		
+}
+
+.lsup-age_container label{
+	width: 80%!important;
+	font-size: 10px;
+}
+
+.profile_picture-container{
+	flex-direction: column;
+}
+.profile_picture-container label{
+	width: 80%!important;
+	font-size: 10px;
+}
+
+.lsup_country_container {
+	width: 80%!important;
+	font-size: 10px;
+}
+
+
+
+
+.lsup_country_container select{
+	width: 100%!important;
+	font-size: 10px;
+	display: block;
+}
+
+#sign-up_lsup_btn{
+	width: 80%!important;
+	font-size: 10px;
+	padding: 20px auto;
+	text-align: center;
+}
+#lsup_country{
+	padding: 1% 5%;
+	width: 40%;
+	margin-bottom: 1.5%;
+	margin-top: 1.5%;
+	
+}
+
+element.style {
+    width: 118px !important;
+    padding: 12px;
+}
+
+
+}
+
+
+
+
+
+
+@media (max-width:480px) {
+.overlay {
+padding:0 0 40px 20px;
+
+}
+
+.overlay h1{
+font: size 55x; ;
+
+
+}
+
+.overlay p{
+
+display: none;
+
+}
+.lsup-age_container{
+	flex-direction: column;
+		
+}
+
+.lsup-age_container label{
+	width: 80%!important;
+	font-size: 12px;
+}
+
+.profile_picture-container{
+	flex-direction: column;
+}
+.profile_picture-container label{
+	width: 50!important;
+	font-size: 12px;
+}
+
+.lsup_country_container {
+
+	text-align: center;
+	margin-right: auto;	
+	width: 80%!important;
+	font-size: 12px;
+}
+
+
+.sign-up-container {
+    left: 0;
+    width: 49%;
+    opacity: 0;
+    z-index: 1;
+}
+.lsup_header {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    margin-bottom: 2%;
+	font-size: 20px;
+}
+#signup-form, #signin-form{
+	
+	
+	padding: 0 30px;
+	
+}
+
+}
