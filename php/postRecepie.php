@@ -150,6 +150,8 @@
         //     $ingredients[] = join(",", $ingredient);
         // }
 
+        $path = "recpie-images";
+
         $ingredients = join("_!", $_POST['ingredient']);
         $instructions = join("_!", $_POST['step']);
 
