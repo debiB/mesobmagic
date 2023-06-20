@@ -48,23 +48,23 @@
 
         $select_img = "SELECT image_url from recepie WHERE rid = " .$input["rid"] .";";
 
-        print_r($input);
+        // print_r($input);
 
-        $result = $conn->query($select_img);
+//         $result = $conn->query($select_img);
 
-    if ($result->num_rows > 0){
-      $img = $result->fetch_assoc()['image_url'];
-      if (file_exists($img)) {
-        if (unlink($img)) {
-            echo 'File deleted successfully.';
-        } else {
-            echo 'Unable to delete the file.';
-        }
-    } else {
-        echo 'File does not exist.';
-}
+//     if ($result->num_rows > 0){
+//       $img = $result->fetch_assoc()['image_url'];
+//       if (file_exists($img)) {
+//         if (unlink($img)) {
+//             echo 'File deleted successfully.';
+//         } else {
+//             echo 'Unable to delete the file.';
+//         }
+//     } else {
+//         echo 'File does not exist.';
+// }
 
-    }
+//     }
 
         $update_stmt = "UPDATE `recepie` SET
             `recipe_name` = ?,
@@ -140,7 +140,7 @@
     };
 
     
-    print_r($_POST);
+    // print_r($_POST);
 
     if(isset($_POST['recipeName'])){
 
@@ -156,7 +156,7 @@
         $instructions = join("_!", $_POST['step']);
 
         include "/opt/lampp/htdocs/mesobmagic/php/uploadImages.php";
-       
+        // print_r("HERE $imagePath");
         $input = [
             "recepie_name" => $_POST['recipeName'],
             "description" => $_POST['description'],
@@ -170,7 +170,7 @@
             "image_url"=>$imagePath,
             "author"=> $_SESSION['uid']];
         
-        
+        print_r($input);
         
         if($_POST['function'] == "create")
             $createPost($input, $conn);

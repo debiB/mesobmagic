@@ -204,7 +204,7 @@ function validateCountry() {
   
   // Event listener for the Sign Up form submission
   document.getElementById('edit-form-submit').addEventListener('click', function (event) {
-	// event.preventDefault(); // Prevent form submission
+	event.preventDefault(); // Prevent form submission
 		if(validateEditForm()){
 
 			var formData = new FormData();

@@ -3,9 +3,11 @@ session_start();
 
 include "/opt/lampp/htdocs/mesobmagic/inc/header.php";
 include "/opt/lampp/htdocs/mesobmagic/php/filterRecepie.php";
+
 ?>
 
-<?php if (!isset($_POST['name'])):?>
+<?php 
+if (!isset($_POST['name'])):?>
 
 <div class="nav_del_container">
 <h1 class="delete-recipie_text">- Delete recipe</h1>

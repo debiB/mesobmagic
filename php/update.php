@@ -5,6 +5,7 @@ $rid = intval($_POST['rid']);
 $data =  $fetchSingleItem($rid, $conn);
 $ingredients = explode('_!', $data['ingredients']);
 $steps = explode('_!', $data['instructions']);
+print_r($_POST);
 ?>
 
 
@@ -12,7 +13,7 @@ $steps = explode('_!', $data['instructions']);
   <div class="post_main_container">
     <h1 class ="post-header">&#128394; Edit recipie</h1>
     <hr class = "post_separator_line" style="color: white; margin:5%;">
-    <form id="post_recipeForm" method="post" action = "postRecepie.php" enctype="multipart/form-data">
+    <form id="edit-post_recipeForm" method="post" action = "postRecepie.php" enctype="multipart/form-data">
       <input type="hidden" value="<?php echo $rid;?>" name= "rid">
       <div>
         <label class = "post_label" for="recipeName">Recipe Name:</label>
@@ -103,6 +104,7 @@ $steps = explode('_!', $data['instructions']);
         <input type="number" id="cookTime" name="cookTime" min="1" oninput="calculateSum()" class = "post_input" value = "<?php echo $data["cook_time"];?>">
         <span class="error" id="cookTimeError"></span>
       </div>
+      <input type="hidden" name="function" value="update">
       <div class ="calc">
         <p class = "total_time">Total time:</p>
         <p id="result"> <?php echo $data["prep_time"] + $data["cook_time"];?></p>
@@ -130,7 +132,7 @@ $steps = explode('_!', $data['instructions']);
 <span class="error" id="difficultyError"></span>
 
       </div>
-      <button type="submit" onclick="submitUpdateForm()">Submit</button>
+      <button type="submit">Submit</button>
     </form>
     
   </div>

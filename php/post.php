@@ -89,7 +89,7 @@
         </select>
         <span class="error" id="difficultyError"></span>
       </div>
-      <button type="submit" onclick="submitForm()">Submit</button>
+      <button type="submit">Submit</button>
     </form>
     
   </div>
@@ -116,5 +116,5 @@ function previewImage(event) {
 
 </script>
 <script src="https://apis.google.com/js/api.js"></script>
-<script src="../scripts/ajax.js"></script>
+<!-- <script src="../scripts/ajax.js"></script> -->
 <?php include "/opt/lampp/htdocs/mesobmagic/inc/footer.php"?>
