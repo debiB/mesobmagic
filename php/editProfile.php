@@ -2,6 +2,7 @@
 session_start();
 include "/opt/lampp/htdocs/mesobmagic/inc/header.php";
 include "/opt/lampp/htdocs/mesobmagic/php/filterUser.php";
+// include "/opt/lampp/htdocs/mesobmaggic/php/sessionStarter.php";
 
 $data = $getUser($_SESSION['uid'], $conn);
 
