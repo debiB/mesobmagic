@@ -31,7 +31,7 @@ if (!isset($_POST['name'])):?>
     <div class="delete-recipe-card">
       <div class="delete-imgtxt" style="max-width:410px; flex-wrap:wrap;">
         <img src="<?php echo $post['image_url']; ?>" class="delete-recipe-image">
-        <p class="delete-recipe-name" style="text-align: right; font-size: 30px; margin-right:50px"><a href="single_item.php?recipe=<?php echo $post['rid']?>"><?php echo $post['recipe_name']; ?></a>
+        <p class="delete-recipe-name" style="text-align: right; font-size: 30px; margin-right:50px"><a href="<?php echo 'single_item.php?recipe='. strval($post['rid'])?>"><?php echo $post['recipe_name']; ?></a>
       </p>
       <div class="stars" style="display:block">
           <?php
@@ -98,7 +98,8 @@ if (!isset($_POST['name'])):?>
     <div class="delete-recipe-card">
       <div class="delete-imgtxt" style="max-width:410px; flex-wrap:wrap;">
         <img src="<?php echo $post['image_url']; ?>" class="delete-recipe-image">
-        <p class="delete-recipe-name" style="text-align: right; font-size: 30px; margin-right:50px"><a href="single_item.php?recipe=<?php echo $post['rid']?>"><?php echo $post['recipe_name']; ?></a>
+     
+        <p class="delete-recipe-name" style="text-align: right; font-size: 30px; margin-right:50px"><a href="<?php echo 'single_item.php?recipe='. strval($post['rid'])?>"><?php echo $post['recipe_name']; ?></a>
       </p>
       <div class="stars" style="display:block">
           <?php

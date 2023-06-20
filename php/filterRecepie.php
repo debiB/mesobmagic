@@ -5,10 +5,10 @@ $fetchByIngredient =  function($ing, $conn){
 
     $ans = array();
  
-    $filter_stmt = "SELECT * FROM `recepie` LEFT JOIN `ratings` ON `ratings`.`rid` = `recepie`.`rid` WHERE `ingredients` LIKE '%_!" . $ing ."_!%' OR `ingredients` LIKE '" . $ing ."_!%' OR `ingredients` LIKE '%_!" . $ing ."' GROUP BY `ratings`.`rid`;
+    $filter_stmt = "SELECT * FROM recepie LEFT JOIN ratings ON ratings.rid = recepie.rid WHERE ingredients LIKE '%_!" . $ing ."_!%' OR ingredients LIKE '" . $ing ."_!%' OR ingredients LIKE '%_!" . $ing ."' GROUP BY ratings.rid;
     ";
     
-    // -- // echo $filter_stmt;
+    // echo $filter_stmt;
 
 
     $result = $conn->query($filter_stmt);
@@ -190,7 +190,7 @@ $getAuthor = function($id, $conn){
 };
 
 $getByAuthorId = function($uid, $conn){
-  $filter_stmt = "SELECT *, COUNT(`rating`) as count, AVG(`rating`) as avg FROM `recepie` LEFT JOIN `ratings` ON `ratings`.`rid` = `recepie`.`rid` WHERE `recepie`.`author` = $uid GROUP BY `recepie`.`rid`;";
+  $filter_stmt = "SELECT recepie.rid, recepie.recipe_name, recepie.description, recepie.ingredients, recepie.instructions, recepie.prep_time, recepie.cook_time, recepie.total_time, recepie.cuisine, recepie.difficulty_level, recepie.image_url, recepie.author, recepie.date_published, recepie.last_modified, COUNT(rating) as count, AVG(rating) as avg FROM `recepie` LEFT JOIN `ratings` ON `ratings`.`rid` = `recepie`.`rid` WHERE `recepie`.`author` = $uid GROUP BY `recepie`.`rid`;";
 
     $result = $conn->query($filter_stmt);
     $ans = [];
@@ -203,7 +203,7 @@ $getByAuthorId = function($uid, $conn){
 };
 
 $getByAuthorIdAndName = function($uid, $name, $conn){
-  $filter_stmt = "SELECT *, COUNT(`rating`) as count, AVG(`rating`) as avg FROM `recepie` LEFT JOIN `ratings` ON `ratings`.`rid` = `recepie`.`rid` WHERE `recepie`.`author` = $uid AND recipe_name LIKE '%$name%' GROUP BY `recepie`.`rid`;";
+  $filter_stmt = "SELECT recepie.rid, recepie.recipe_name, recepie.description, recepie.ingredients, recepie.instructions, recepie.prep_time, recepie.cook_time, recepie.total_time, recepie.cuisine, recepie.difficulty_level, recepie.image_url, recepie.author, recepie.date_published, recepie.last_modified, COUNT(rating) as count, AVG(rating) as avg FROM recepie LEFT JOIN ratings ON ratings.rid = recepie.rid WHERE recepie.author = $uid AND recipe_name LIKE '%$name%' GROUP BY recepie.rid;";
 
   // echo $filter_stmt;
 
@@ -211,9 +211,11 @@ $getByAuthorIdAndName = function($uid, $name, $conn){
     $ans = [];
     if ($result->num_rows > 0) {
       while($row = $result->fetch_assoc()){
+        //  print_r($row);
          $ans[] = $row;
       }
     }
+    // print_r($ans);
     return $ans;
 };
 
@@ -228,7 +230,7 @@ $fetchByMultipleIds = function($input, $conn){
 
 $popularN = function($n, $conn){
   $ans = [];
-    $filter_stmt = "SELECT *, COUNT(`rating`) as count, AVG(`rating`) as avg FROM `recepie` LEFT JOIN `ratings` ON `ratings`.`rid` = `recepie`.`rid` GROUP BY `recepie`.`rid` ORDER BY rating DESC LIMIT $n;
+    $filter_stmt = "SELECT *, COUNT(rating) as count, AVG(rating) as avg FROM recepie LEFT JOIN ratings ON ratings.rid = recepie.rid GROUP BY recepie.rid ORDER BY rating DESC LIMIT $n;
     ";
     // echo $filter_stmt;
     $result = $conn->query($filter_stmt);

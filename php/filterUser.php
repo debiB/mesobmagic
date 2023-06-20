@@ -40,7 +40,7 @@ $getUserByEmail = function($email, $conn){
 
 
 
-
+// print_r($_POST);
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   if(isset($_POST['id'])){
@@ -53,7 +53,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   }
   else if (isset($_POST['func']) && $_POST['func'] == 'email'){
     // print_r($_POST);
-    $isValidEmail($_POST['email'], $conn);
+    echo ($isValidEmail($_POST['email'], $conn));
   }
   else if (isset($_POST['func2'])){
     $data = $getUserByEmail($_POST['email'], $conn);

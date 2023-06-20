@@ -50,21 +50,21 @@
 
         // print_r($input);
 
-//         $result = $conn->query($select_img);
+        $result = $conn->query($select_img);
 
-//     if ($result->num_rows > 0){
-//       $img = $result->fetch_assoc()['image_url'];
-//       if (file_exists($img)) {
-//         if (unlink($img)) {
-//             echo 'File deleted successfully.';
-//         } else {
-//             echo 'Unable to delete the file.';
-//         }
-//     } else {
-//         echo 'File does not exist.';
-// }
+    if ($result->num_rows > 0){
+      $img = $result->fetch_assoc()['image_url'];
+      if (file_exists($img)) {
+        if (unlink($img)) {
+            echo 'File deleted successfully.';
+        } else {
+            echo 'Unable to delete the file.';
+        }
+    } else {
+        echo 'File does not exist.';
+}
 
-//     }
+    }
 
         $update_stmt = "UPDATE `recepie` SET
             `recipe_name` = ?,
@@ -170,7 +170,7 @@
             "image_url"=>$imagePath,
             "author"=> $_SESSION['uid']];
         
-        print_r($input);
+        // print_r($input);
         
         if($_POST['function'] == "create")
             $createPost($input, $conn);

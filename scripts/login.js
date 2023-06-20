@@ -174,7 +174,7 @@ function validateLastName() {
 
 function checkEmailValidity() {
 	var formData = new FormData();
-	formData.append("func2", "email");
+	formData.append("func", "email");
 	formData.append('email', document.getElementById("email").value);
   
 	var xhr = new XMLHttpRequest();
@@ -186,7 +186,7 @@ function checkEmailValidity() {
 	  if (xhr.readyState === XMLHttpRequest.DONE) {
 		if (xhr.status === 200) {
 		  console.log(xhr.responseText);
-		  if (xhr.responseText === "false") {
+		  if (xhr.responseText == "false") {
 			// document.getElementById('email-error').innerHTML = "Email is already in use.";
 			isEmailValid = false;
 		  }
@@ -204,10 +204,11 @@ function checkEmailValidity() {
   
 // Function to validate the Email field
 function validateEmail() {
+	
 	const emailInput = document.getElementById('email');
 	const emailError = document.getElementById('email-error');
 	const emailValue = emailInput.value.trim();
-
+	emailError.innerHTML = "";
 
 
 	if (emailValue === '') {

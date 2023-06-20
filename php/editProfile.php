@@ -32,7 +32,7 @@ $data = $getUser($_SESSION['uid'], $conn);
     <label class = "edit-profile-label" for="email">Email:</label>
     <input class = "edit-profile-input" type="email" id="email" name="email"
     value = "<?php echo $data["email"]?>"
-    >
+    disabled>
     <span class="login_signup-error-message" id="email-error"></span>
 
     <label class="edit-profile-label" for="country">Country:</label>
