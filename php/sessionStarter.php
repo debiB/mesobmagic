@@ -1,9 +1,5 @@
 <?php session_start()?>
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Session Expiration Popup</title>
-    <style>
+<style>
         /* Modal styles */
         .modal {
             display: none;
@@ -20,7 +16,7 @@
 
         .modal-content {
             background-color: #fefefe;
-            margin: 10% auto;
+            margin: 20% auto;
             padding: 20px;
             border: 1px solid #888;
             width: 300px;
@@ -64,8 +60,6 @@
             ?>
         });
     </script>
-</head>
-<body>
     <!-- Session Expiration Popup Modal -->
     <div id="sessionExpiredModal" class="modal">
         <div class="modal-content">
@@ -80,5 +74,4 @@
             </div>
         </div>
     </div>
-</body>
-</html>
+

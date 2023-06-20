@@ -1,9 +1,11 @@
 <?php
-// session_start();
+session_start();
 include "/opt/lampp/htdocs/mesobmagic/php/filterRecepie.php";
 include "/opt/lampp/htdocs/mesobmagic/inc/header.php";
 include "/opt/lampp/htdocs/mesobmagic/php/commentsController.php";
 
+
+// session_start();
 $recipe = intval($_REQUEST['recipe']);
 $data = $fetchSingleItem($recipe, $conn);
 
@@ -32,6 +34,7 @@ if (!in_array($recipeId, $viewedRecipes)) {
     $viewedRecipes = array_slice($viewedRecipes, -10, 10);
     }
 }
+
 // print_r($viewedRecipes);
 // Step 5: Store the updated viewed recipes list in the cookie
 setcookie($cookieName, serialize($viewedRecipes), time() + (30 * 24 * 60 * 60));
@@ -41,8 +44,9 @@ setcookie($cookieName, serialize($viewedRecipes), time() + (30 * 24 * 60 * 60));
 
 
 ?>
-<link rel="stylesheet" href="styles/single-item.css">
-<body>
+<?php include "/opt/lampp/htdocs/mesobmagic/php/sessionStarter.php"?>
+
+<div style="visibility:hidden; min-height:15em;"></div>
 
     <div class="top-single-item">
         <div class= "top-title">

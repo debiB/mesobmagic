@@ -1,0 +1,10 @@
+<link rel="stylesheet" href="../styles/header.css"> 
+    <link rel="stylesheet" href="../styles/search.css"> 
+    <link rel="stylesheet" href="../styles/footer.css">
+    <link rel="stylesheet" href="../styles/single-item.css">
+    <link rel="stylesheet" href="../styles/post.css">
+    <link rel="stylesheet" href="../styles/profile.css">
+     <link rel="stylesheet" href="../styles/delete_rec.css">
+     <link rel="stylesheet" href="../styles/login.css">
+     
+    <link rel="stylesheet" href = "../styles/footer.css">

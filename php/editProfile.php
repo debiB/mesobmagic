@@ -2,12 +2,12 @@
 session_start();
 include "/opt/lampp/htdocs/mesobmagic/inc/header.php";
 include "/opt/lampp/htdocs/mesobmagic/php/filterUser.php";
-// include "/opt/lampp/htdocs/mesobmaggic/php/sessionStarter.php";
 
 $data = $getUser($_SESSION['uid'], $conn);
 
 ?>
-
+<link rel="stylesheet" href="../styles/profile.css">
+<div style="visibility:hidden; min-height:9em;"></div>
 <h1 class ="post-header">&#128394; Edit Profile</h1>
 <div class="edit-profile-container">
   <form class = "edit-profile-form">

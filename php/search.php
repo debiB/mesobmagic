@@ -1,9 +1,12 @@
 <?php include "/opt/lampp/htdocs/mesobmagic/inc/header.php" ?>
 <?php include('/opt/lampp/htdocs/mesobmagic/php/filterRecepie.php');?>
+<?php include "/opt/lampp/htdocs/mesobmagic/php/sessionStarter.php"?>
 <?php
 session_start();
+// print_r($_SESSION);
+// include "/opt/lampp/htdocs/mesobmagic/php/sessionStarter.php";
 ?>
-
+<div style="visibility:hidden; min-height:9em;"></div>
 <div class="container">
   <label for="search" class="searchtxt">Search</label>
   <form action="<?php echo $_SERVER["PHP_SELF"];?>" method="get" id  = "cont" class="search-form">
@@ -25,7 +28,7 @@ session_start();
 
 <?php
 $viewedRecipes = isset($_COOKIE[$_SESSION['uid']]) ? unserialize($_COOKIE[$_SESSION['uid']]) : [];
-
+// print_r($_COOKIE);
 $functions = [
   "name" => $fetchByName,
   "difficulty" => $fetchByDifficulty,

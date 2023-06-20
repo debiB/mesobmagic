@@ -8,12 +8,12 @@ $steps = explode('_!', $data['instructions']);
 print_r($_POST);
 ?>
 
-
+<div style="visibility:hidden; min-height:15em;"></div>
 
   <div class="post_main_container">
     <h1 class ="post-header">&#128394; Edit recipie</h1>
     <hr class = "post_separator_line" style="color: white; margin:5%;">
-    <form id="edit-post_recipeForm" method="post" action = "postRecepie.php" enctype="multipart/form-data">
+    <form id="post_recipeForm" method="post" action = "postRecepie.php" enctype="multipart/form-data">
       <input type="hidden" value="<?php echo $rid;?>" name= "rid">
       <div>
         <label class = "post_label" for="recipeName">Recipe Name:</label>
@@ -161,7 +161,6 @@ function previewImage(event) {
 
 
 </script>
-<script src="../scripts/post.js"></script>
+<script src="../scripts/update-post.js"></script>
 <script src="https://apis.google.com/js/api.js"></script>
-<script src="../scripts/ajax.js"></script>
 <?php include "/opt/lampp/htdocs/mesobmagic/inc/footer.php"?>

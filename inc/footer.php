@@ -1,23 +1,29 @@
-<footer class="footer">
-        <nav class="footer-nav">
-          <a href="#">Discover</a>
-          <a href="#">Share</a>
-          <a href="#">Contact</a>
-          <a href="#">About Us</a>
-        </nav>
-        <div class="social-icons">
-          <a href="#"><img src="https://cdn4.iconfinder.com/data/icons/various-icons-2/476/Facebook.png" alt="Facebook"></a>
-          <a href="#"><img src="https://icons.iconarchive.com/icons/fa-team/fontawesome-brands/512/FontAwesome-Brands-Twitter-icon.png" alt="Twitter"></a>
-          <a href="#"><img src="https://www.freepnglogos.com/uploads/pinterest-logo-black-png-23.png" alt="Pinterest"></a>
+<div class="footer_container">
+        <div class="first_col_footer">
+            <img class="footer_logo" src="../mesobmagic22v2.gif">
+            <p class ="first_col_txt" style="display:block">Want to start your journey with us?</p>
+            <button class="footer_signup_button">Sign up</button>
+            <div class="social_media_container">
+                <p class = "footer_contactUs">Contact us</p>
+                <i class="material-icons">facebook</i>
+                <i class="material-icons">tiktok</i>
+            </div>
         </div>
-        <div class="footer-info">
-          <p class="footer_text">This website is for informational purposes only. The recipes provided are intended as a guide and may not be suitable for everyone. Please use your best judgment when preparing and consuming food.</p>
-          <p class="footer_text">For any inquiries or feedback, please contact us at <a href="mesobmagic@gmail.com">mesobmagic@gmail.com</a>.</p>
+        <div class="second_col_footer">
+            <ul class = "footer_nav_links">
+                <li><a>Discover recpie</a></li>
+                <li><a>Post recpie</a></li>
+                <li><a>Update your recpie</a></li>
+                <li><a>Delete your recpie</a></li>
+            </ul>
         </div>
-        <div class="footer-copyright">
-          &copy; 2023 MesobMagic
-        </div>
-      </footer>  
+        <div class="third_col_footer">
 
+            <ul class ="footer_nav_third_link">
+                <li><a>About us</a></li>
+                <li><a>Terms and Services</a></li>
+            </ul>
+        </div>
+    </div>
 </body>
 </html>
