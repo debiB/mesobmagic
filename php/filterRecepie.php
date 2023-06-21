@@ -8,7 +8,6 @@ $fetchByIngredient =  function($ing, $conn){
     $filter_stmt = "SELECT * FROM recepie LEFT JOIN ratings ON ratings.rid = recepie.rid WHERE ingredients LIKE '%_!" . $ing ."_!%' OR ingredients LIKE '" . $ing ."_!%' OR ingredients LIKE '%_!" . $ing ."' GROUP BY ratings.rid;
     ";
     
-    // echo $filter_stmt;
 
 
     $result = $conn->query($filter_stmt);

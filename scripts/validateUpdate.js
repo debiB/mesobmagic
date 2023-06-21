@@ -15,7 +15,6 @@ function validateFirstName() {
 	}
   }
   
-  // Function to validate the Last Name field
   function validateLastName() {
 	const lastNameInput = document.getElementById('last-name');
 	const lastNameError = document.getElementById('last-name-error');
@@ -32,7 +31,6 @@ function validateFirstName() {
 	}
   }
   
-  // Function to validate the Email field
   function validateEmail() {
 	const emailInput = document.getElementById('email');
 	const emailError = document.getElementById('email-error');
@@ -47,7 +45,6 @@ function validateFirstName() {
 	}
   }
   
-  // Function to validate the Password field
   function validatePassword() {
 	const passwordInput = document.getElementById('password');
 	const passwordError = document.getElementById('password-error');
@@ -67,7 +64,6 @@ function validateFirstName() {
 	}
   }
   
-  // Function to validate the Confirm Password field
   function validateConfirmPassword() {
 	const passwordInput = document.getElementById('password');
 	const confirmPasswordInput = document.getElementById('confirm-password');
@@ -87,7 +83,6 @@ function validateFirstName() {
 	}
   }
   
-  // Function to validate the Age field
   function validateDob() {
 	const dobInput = document.getElementById('dob');
 	const dobError = document.getElementById('dob-error');
@@ -105,7 +100,6 @@ function validateFirstName() {
 	  return true;
 	}
   }
-  // Function to validate the Job Title field
   function validateJobTitle() {
 	const jobTitleInput = document.getElementById('job-title');
 	const jobTitleError = document.getElementById('job-title-error');
@@ -130,7 +124,7 @@ function validateFirstName() {
       photoError.textContent = "Photo is required";
       return false;
     } else {
-      var allowedFormats = ["jpg", "jpeg", "png"]; // Add more allowed formats if needed
+      var allowedFormats = ["jpg", "jpeg", "png"]; 
       var fileExtension = photoInput.files[0].name.split(".").pop().toLowerCase();
       var file = photoInput.files[0];
   
@@ -145,7 +139,7 @@ function validateFirstName() {
         photoError.textContent = "Invalid file format. Only JPG, JPEG, and PNG are allowed.";
         return false;
       } else {
-        photoError.textContent = ""; // Clear any previous error message
+        photoError.textContent = ""; 
 
         return true;
       }
@@ -154,7 +148,6 @@ function validateFirstName() {
 
     }
   }
-  // Function to validate the Country field in Sign Up form
 function validateCountry() {
 	const countrySelect = document.getElementById('country');
 	const countryError = document.getElementById('country-error');
@@ -169,7 +162,6 @@ function validateCountry() {
 	}
   }
   
-  // Function to perform overall validation for Sign Up form
   function validateEditForm() {
 	const isValidFirstName = validateFirstName();
 	const isValidLastName = validateLastName();
@@ -202,7 +194,6 @@ function validateCountry() {
 	}
   }
   
-  // Event listener for the Sign Up form submission
   document.getElementById('edit-form-submit').addEventListener('click', function (event) {
 	event.preventDefault(); // Prevent form submission
 		if(validateEditForm()){
@@ -226,9 +217,10 @@ function validateCountry() {
 				contentType: false,
 				success: function(response) {
 				console.log(response);
+				window.location = '../php/home_page.php';
 				},
 				error: function(xhr, status, error) {
-				console.log('An error occurred while saving the data.');
+				alert('An error occurred while saving the data.');
 				console.log(error);
 				}
 			});

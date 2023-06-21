@@ -6,7 +6,17 @@ include "/opt/lampp/htdocs/mesobmagic/php/filterUser.php";
 $data = $getUser($_SESSION['uid'], $conn);
 
 ?>
+<link rel="stylesheet" href="../styles/search.css"> 
+<link rel="stylesheet" href="../styles/single-item.css">
+<link rel="stylesheet" href="../styles/post.css">
 <link rel="stylesheet" href="../styles/profile.css">
+ <link rel="stylesheet" href="../styles/delete_rec.css">
+ <link rel="stylesheet" href="../styles/login.css">
+ <link rel="stylesheet" href="../styles/editProfile.css">
+ 
+<link rel="stylesheet" href = "../styles/footer.css">
+<link rel="stylesheet" href="../styles/header.css"> 
+
 <div style="visibility:hidden; min-height:9em;"></div>
 <h1 class ="post-header">&#128394; Edit Profile</h1>
 <div class="edit-profile-container">
@@ -111,10 +121,8 @@ function previewImage(event) {
 
 <script>
 $(document).ready(function() {
-  // Initially hide the password fields
   $("#chpass").hide();
 
-  // Show/hide password fields when "Change Password" button is clicked
   $("#changePasswordButton").click(function() {
     $("#chpass").toggle();
     

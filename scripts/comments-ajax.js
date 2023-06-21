@@ -4,7 +4,6 @@ $(document).ready(function() {
   
     $(".sub-comment").hide();
     
-    // Event delegation to handle click on dynamically added elements
     $(document).on('click', '.expand-comment', function() {
 
       // $(".sub-comment").toggle();
@@ -69,14 +68,12 @@ $(document).ready(function() {
               data: data,
               dataType: 'json',
               success: function(response) {
-                // Handle the response here
                  fname = response.first_name;
                  lname = response.last_name;
 
                  handleResponse();
               },
               error: function(xhr, status, error) {
-                // Handle any errors here
                 console.log(error);
               }
             });
@@ -85,13 +82,10 @@ $(document).ready(function() {
             function handleResponse(){
 
 
-            // Assuming you have the date as a string
             var dateString = comment.ts;
 
-            // Create a new Date object from the date string
             var date = new Date(dateString);
 
-            // Format the date in "M d, y" format
             var options = { 
             month: 'short',
             day: 'numeric',
@@ -151,7 +145,7 @@ $(document).ready(function() {
       
       async function delayedCodeExecution() {
         // console.log("Before the delay");
-        await sleep(500); // Pause the code execution for 2 seconds
+        await sleep(500); 
         $(par_div[2]).slideToggle();
         par_div[1].children[3].innerHTML = (par_div[1].children[3].innerHTML.trim() == "expand_more" ? "expand_less" : "expand_more");
       }
@@ -167,7 +161,6 @@ $(document).ready(function() {
 
   function showReply(event) {
     
-    // Rest of your code here
     var commid = "comm-"+event.target.dataset.comm_id;
     // $(".reply-box").hide();
     $("#" + commid).slideToggle();
@@ -205,7 +198,7 @@ $(document).ready(function() {
   function saveComment(comment, rcid, rid) {
     // console.log(comment, rcid, rid);
     $.ajax({
-      url: '../php/commentsController.php', // Replace with the path to your PHP script
+      url: '../php/commentsController.php', 
       type: 'POST',
       data: {
         comment: comment,

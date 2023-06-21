@@ -1,0 +1,118 @@
+
+  .edit-profile-container{
+    width: 70vw;
+    font-family: encoded sans;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 30px;
+    
+  }
+  
+  .edit-profile-form {
+    width: 100%;
+    margin: 0 auto;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    background-color: #f2f2f2;
+    padding-left: 13vw;
+    padding-right: 200px;
+    border-radius: 10px;
+    border: solid 2px;
+  }
+  
+  .edit-profile-label {
+    display: block;
+    margin-bottom: 10px;
+  }
+  
+  .edit-profie-input, #changePasswordButton
+   {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+  }
+  
+  .edit-profile-file {
+    margin-bottom: 10px;
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: white;
+    color: black;
+    cursor: pointer;
+    font-size:18px;
+    font-weight:600;
+    font-family: "Encode Sans Semi Condensed", sans-serif;
+    border: #DD7230 solid;
+    border-radius: 10px;
+    margin-bottom: 2%;
+    margin-top: 2vh;
+    width: 43vw;
+  }
+  
+  .edit-profile-input, #changePasswordButton{
+    width: 43vw;
+  }
+  
+  .edit-profile-submit {
+    background-color: #f2884b;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 43vw;
+  }
+  
+  label [for = "profileImage"]{
+    margin-top: 0;
+  } 
+  
+  
+  
+  .edit-photo{
+    width: 150px;
+    height: 150px;
+    overflow: hidden;
+  }
+  
+  
+  
+  @media ((max-width:850px)) {
+    .profile-info>label
+  {
+    display: none;
+  }
+  .post-header{
+    /* width: 20vw; */
+    font-size: 30px;
+  }
+  }
+  
+  @media ((max-width:500px)) {
+    
+   *{
+    font-size: 12px;
+  
+   }
+   .edit-profile-label{
+    width: 20vw;
+    margin-top: 8px;
+   }
+   #changePasswordButton{
+    margin-top:15px!important;
+    margin-bottom: 8px;
+  
+   }
+   .post-header{
+    font-size: 25px;
+   }
+  }
+  
+  /* @media ((max-width:1088) and (min-width:)) {
+    
+  } */

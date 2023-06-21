@@ -7,12 +7,22 @@ $uid = intval($_REQUEST['user']);
 $data = $getUser($uid, $conn);
 
 ?>
+<link rel="stylesheet" href="../styles/profile.css">
 
+<link rel="stylesheet" href="../styles/editProfile.css">
 
+<link rel="stylesheet" href = "../styles/footer.css">
+<div style="visibility:hidden; min-height:9em;"></div>
 <div id="profile-viewer">
   <div class = "profile-title"><h2 >User Profile</h2>
   <?php if(isset($_SESSION['uid']) && $_SESSION['uid'] == $uid):?>
-    <button class="profile-edit-button"><span class="material-symbols-outlined">
+    <button class="profile-edit-button" onclick="handlefunction()"><span class="material-symbols-outlined">
+    <script>
+    function handlefunction(action) {
+        window.location = "editProfile.php";
+        }
+    
+</script>
 edit
 </span></button>
   <?php endif?>

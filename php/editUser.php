@@ -149,17 +149,13 @@ else if(isset($_POST['withPass'])){
     print_r(!isset($_FILES['photo']));
     if(!isset($_FILES['photo'])){
             print_r($_FILES);
-        // Source file path on your computer
             $sourceFilePath = $img;
             echo $img;
 
-            // Temporary destination file path
             $tmpFilePath = tempnam(sys_get_temp_dir(), 'tmpfile');
 
-            // Copy the file to the temporary location
             copy($sourceFilePath, $tmpFilePath);
 
-            // Set the $_FILES array
             $_FILES['photo'] = array(
                 'name' => basename($sourceFilePath),
                 'type' => mime_content_type($sourceFilePath),

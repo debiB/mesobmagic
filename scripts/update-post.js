@@ -1,38 +1,30 @@
 function submitUpdateForm() {
-    // Create a new FormData object
     var formData = new FormData(document.getElementById("post_recipeForm"));
     formData.append("function", "update");
-    // Create a new XMLHttpRequest object
     console.log(formData)
     var xhr = new XMLHttpRequest();
   
-    // Set up the callback function for the AJAX request
     xhr.onreadystatechange = function() {
       if (xhr.readyState === XMLHttpRequest.DONE) {
         if (xhr.status === 200) {
-          // Request successfu
           console.log(xhr.responseText);
           alert("your recipie has been saved successfuly")
           window.location = "../php/search.php"
         } else {
-          // Request failed
           console.log(xhr.status);
         }
       }
     };
   
-    // Open the AJAX request
     xhr.open("POST", "postRecepie.php", true);
   
-    // Send the form data
     xhr.send(formData);
     
   }
 
   document.getElementById("post_recipeForm").addEventListener("submit", function(event) {
-    event.preventDefault(); // Prevent form submission
+    event.preventDefault(); 
   
-    // Clear previous error messages
     clearErrors();
     isvalid = true;
     isvalid &= cuisine();
@@ -43,9 +35,7 @@ function submitUpdateForm() {
     isvalid &= difficulty();
     isvalid &= ingredients();
     isvalid &= description();
-    // isvalid &= authorName();
     isvalid &= desc();
-    // validate description 
     function desc() {
     var descInput = document.getElementById("desc");
     var descError = document.getElementById("desceError");
@@ -63,7 +53,6 @@ function submitUpdateForm() {
     }
   }
   
-    // Validate cuisine type
     function cuisine() {
       var cuisineInput = document.getElementById("cuisine");
       var cuisineError = document.getElementById("cuisineError");
@@ -76,7 +65,6 @@ function submitUpdateForm() {
       }
     }
   
-    // Validate recipe name
     function recipeName() {
       var recipeNameInput = document.getElementById("recipeName");
       var recipeNameError = document.getElementById("recipeNameError");
@@ -89,12 +77,11 @@ function submitUpdateForm() {
         recipeNameError.textContent = "Invalid recipe name. Recipe name should only contain alphanumeric characters,whitespace, and hyphen. Also, the recipe name should be atleast three characters.";
         return false;
       } else {
-        recipeNameError.textContent = ""; // Clear any previous error message
+        recipeNameError.textContent = ""; 
         return true;
       }
     }
   
-    // Validate photo upload format (assuming only image formats are allowed)
     function photo() {
       var photoInput = document.getElementById("photo");
       var photoError = document.getElementById("photoError");
@@ -103,7 +90,7 @@ function submitUpdateForm() {
         photoError.textContent = "Photo is required";
         return false;
       } else {
-        var allowedFormats = ["jpg", "jpeg", "png"]; // Add more allowed formats if needed
+        var allowedFormats = ["jpg", "jpeg", "png"]; 
         var fileExtension = photoInput.files[0].name.split(".").pop().toLowerCase();
         var file = photoInput.files[0];
     
@@ -118,7 +105,7 @@ function submitUpdateForm() {
           photoError.textContent = "Invalid file format. Only JPG, JPEG, and PNG are allowed.";
           return false;
         } else {
-          photoError.textContent = ""; // Clear any previous error message
+          photoError.textContent = ""; 
           return true;
         }
   
@@ -127,7 +114,6 @@ function submitUpdateForm() {
       }
     }
   
-    // Validate preparation time
     function preparation() {
       var prepTimeInput = document.getElementById("prepTime");
       var prepTimeError = document.getElementById("prepTimeError");
@@ -140,7 +126,6 @@ function submitUpdateForm() {
       }
     }
   
-    // Validate cook time
     function cookTime() {
       var cookTimeInput = document.getElementById("cookTime");
       var cookTimeError = document.getElementById("cookTimeError");
@@ -153,7 +138,6 @@ function submitUpdateForm() {
       }
     }
   
-    // Validate difficulty
     function difficulty() {
       var difficultyInput = document.getElementById("difficulty");
       var difficultyError = document.getElementById("difficultyError");
@@ -166,7 +150,6 @@ function submitUpdateForm() {
       }
     }
   
-    // Validate ingredients
     function ingredients() {
       var ingredientsList = document.getElementById("ingredientsList");
       var ingredientsError = document.getElementById("ingredientsError");
@@ -191,12 +174,11 @@ function submitUpdateForm() {
         ingredientsError.textContent = "Invalid ingredients. Ingredients should only contain alphanumeric characters, whitespace, and hyphen.";
         return false;
       } else {
-       ingredientsError.textContent = ""; // Clear any previous error message
+       ingredientsError.textContent = ""; 
         return true;
       }
     }
   
-    // Validate description
     function description() {
       var descriptionInput = document.getElementById("description");
       var descriptionError = document.getElementById("descriptionError");
@@ -215,7 +197,6 @@ function submitUpdateForm() {
     }
     
   
-    // Clear error messages
     function clearErrors() {
       document.getElementById("cuisineError").textContent = "";
       document.getElementById("recipeNameError").textContent = "";
@@ -238,38 +219,30 @@ function submitUpdateForm() {
   });
   var count = 1; // Counter for input fields
   
-  // Add Ingredient Button
   var addIngredientButton = document.getElementById("addIngredient");
   addIngredientButton.addEventListener("click", addIngredient);
   
-  // Function to Add Ingredient Field
   function addIngredient() {
     var ingredientsList = document.getElementById("ingredientsList");
   
-    // Create new ingredient list item
     var li = document.createElement("li");
   
-    // Create input field for ingredient
     var ingredientInput = document.createElement("input");
     ingredientInput.type = "text";
     ingredientInput.name = "ingredient[]";
   
-    // Create button to remove ingredient
     var removeButton = document.createElement("button");
     removeButton.type = "button";
     removeButton.className = "removeIngredient";
     removeButton.textContent = "X";
     removeButton.addEventListener("click", removeIngredient);
   
-    // Append input and remove button to list item
     li.appendChild(ingredientInput);
     li.appendChild(removeButton);
   
-    // Append new list item to the ingredients list
     ingredientsList.appendChild(li);
   }
   
-  // Function to Remove Ingredient Field
   function removeIngredient(event) {
     var li = event.target.parentNode;
     // console.log(event);
@@ -277,55 +250,46 @@ function submitUpdateForm() {
     ul.removeChild(li);
   }
   
-  var stepCount = 1; // Counter for step fields
+  var stepCount = 1; 
   
-  // Function to add a step field with a remove button
   function addStepField() {
     stepCount++;
     
     var stepsContainer = document.getElementById("stepsContainer");
   
-    // Create a new step container div
     var stepContainer = document.createElement("div");
     stepContainer.className = "step-container";
   
-    // Create a label for the step
     var stepLabel = document.createElement("label");
     stepLabel.textContent = "Step " + stepCount;
     stepLabel.htmlFor = "description" + stepCount;
   
-    // Create a div to hold the textarea and remove button
     var stepsDiv = document.createElement("div");
     stepsDiv.className = "steps";
   
-    // Create a textarea for the step description
     var stepTextarea = document.createElement("textarea");
     stepTextarea.name = "step[]";
     stepTextarea.placeholder = "Enter step description";
     stepTextarea.id = "description" + stepCount;
   
-    // Create a remove button
     var removeButton = document.createElement("button");
     removeButton.type = "button";
     removeButton.className = "removeStep";
     removeButton.textContent = "X";
   
-    // Add an event listener to the remove button
     removeButton.addEventListener("click", function() {
-      stepContainer.remove(); // Remove the step field when the button is clicked
+      stepContainer.remove(); 
       stepCount-=1
     });
   
    
   
-    // Append the label, textarea, and remove button to the step container
     stepsDiv.appendChild(stepTextarea);
     stepsDiv.appendChild(removeButton);
   
     stepContainer.appendChild(stepLabel);
     stepContainer.appendChild(stepsDiv);
   
-    // Append the step container to the steps container
     stepsContainer.appendChild(stepContainer);
   }
   
@@ -337,7 +301,6 @@ function submitUpdateForm() {
     ul.remove(li);
   }
   
-  // Add an event listener to the "Add Step" button
   var addStepButton = document.getElementById("addStep");
   addStepButton.addEventListener("click", addStepField);
   

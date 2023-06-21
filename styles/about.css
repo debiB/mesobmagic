@@ -1,0 +1,46 @@
+@import url('https://fonts.googleapis.com/css2?family=Encode+Sans+Semi+Condensed:wght@900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Encode+Sans+Semi+Condensed:wght@600;900&display=swap'); 
+* {
+	box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Encode Sans Semi Condensed", sans-serif;
+}
+#imported-content{
+    position: absolute;
+    width: 100%;
+    height:100%;
+    margin-bottom: 20;
+  
+  }
+  #imported-footer-content{
+      width:100%;
+      height: 100vh;
+      margin-top: 10vh;
+    margin-bottom: 0;
+    padding:0;
+  }
+.about_container{
+    padding: 5vh;
+}
+.about_us, .term_and_conditions{
+ width: 90%;
+ margin: 2vh;
+}
+.about_header{
+margin-left: 12vh;
+margin-bottom: 5vh;
+}
+.abouttxt{
+    text-align: justify;
+    line-height: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    width:90%;
+    font-size: 14px;
+}
+.terms_and_cond{
+    background-color: #eee;
+    padding: 5vh;
+    font-size: 14px;
+}

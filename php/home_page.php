@@ -1,20 +1,24 @@
 <?php
 session_start();
+include "/opt/lampp/htdocs/mesobmagic/inc/header.php";
 include "/opt/lampp/htdocs/mesobmagic/php/filterRecepie.php";
 // include "/opt/lampp/htdocs/mesobmagic/php/sessionStarter.php";
 
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mesobmagic</title>
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link rel="stylesheet" href="../styles/search.css"> 
+<link rel="stylesheet" href="../styles/single-item.css">
+<link rel="stylesheet" href="../styles/post.css">
+<link rel="stylesheet" href="../styles/profile.css">
+ <link rel="stylesheet" href="../styles/delete_rec.css">
+ <link rel="stylesheet" href="../styles/login.css">
+ <link rel="stylesheet" href="../styles/editProfile.css">
+ 
+<link rel="stylesheet" href = "../styles/footer.css">
+<link rel="stylesheet" href="../styles/header.css"> 
+<div class = "poser-div"></div>
+
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="../styles/home_page.css">
-</head>
-<body>
     <div id="slider">
         <figure class="slideshow_fig">
             <img src="../images/mesobmagic-banners_1.gif" alt="Image 1">
@@ -110,7 +114,5 @@ include "/opt/lampp/htdocs/mesobmagic/php/filterRecepie.php";
         </form>
     </div>
 </div>
-<object data="../php/footer.html" id="imported-footer-content" type="text/html"></object>
     <script src="../scripts/home_page.js"></script>
-</body>
-</html>
+<?php include "/opt/lampp/htdocs/mesobmagic/inc/footer.php"?>

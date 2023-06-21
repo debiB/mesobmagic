@@ -10,37 +10,28 @@ $recipe = intval($_REQUEST['recipe']);
 $data = $fetchSingleItem($recipe, $conn);
 
 
-// Step 2: Create a function to update the viewed recipes list
 $cookieName = $_SESSION['uid'];
 $viewedRecipes = [];
 if(isset($_COOKIE[$cookieName]))
     $viewedRecipes = unserialize($_COOKIE[$cookieName]);
-// print_r($viewedRecipes);
-// Step 2: Create a function to update the viewed recipes list
-// Example usage:
-$recipeId = $recipe; // Replace with the actual recipe ID
+
+$recipeId = $recipe; 
 
 if (empty($viewedRecipes)) {
     $viewedRecipes = [];
 }
 
-// Update the viewed recipes list
 if (!in_array($recipeId, $viewedRecipes)) {
-    // Add the newly viewed recipe to the list
     array_push($viewedRecipes, $recipeId);
     
-    // Trim the list to keep only the last 10 viewed recipes
     if(count($viewedRecipes) > 10){
     $viewedRecipes = array_slice($viewedRecipes, -10, 10);
     }
 }
 
-// print_r($viewedRecipes);
-// Step 5: Store the updated viewed recipes list in the cookie
 setcookie($cookieName, serialize($viewedRecipes), time() + (30 * 24 * 60 * 60));
 
 
-// Example usage:
 
 
 ?>
@@ -212,13 +203,12 @@ setcookie($cookieName, serialize($viewedRecipes), time() + (30 * 24 * 60 * 60));
     
     
     ?></a></span>
-    <span class="comment-on"> on <?php $dateString = $comment['ts']; // Example date string in dd-mm-yyyy format
-        // echo $dateString;
+    <span class="comment-on"> on <?php $dateString = $comment['ts']; 
         $date = DateTime::createFromFormat('Y-m-d', $dateString);
 
         if ($date) {
             $formattedDate = $date->format('M d, Y');
-            echo $formattedDate; // Output: Jun 10, 2023
+            echo $formattedDate; 
         } else {
             echo "Invalid date format";
         }?></span>
@@ -335,8 +325,7 @@ send
 
         function submitRating(user_uid, recipe_rid, user_rating) {
   var xhr = new XMLHttpRequest();
-  var url = "ratings.php"; // Replace with your API endpoint URL
-
+  var url = "ratings.php"; 
   var data = new FormData();
   data.append('uid', user_uid);
   data.append('rid', recipe_rid);

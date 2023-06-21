@@ -5,6 +5,7 @@
   margin: 0;
   padding: 0;
   font-family: "Encode Sans Semi Condensed", sans-serif;
+  text-decoration: none;
 }
 .footer_container{
   display:flex;

@@ -76,10 +76,17 @@ body{
 }
 
 .single-item-rating > .single-count {
-    font-size: 3vw;
+    font-size: 2vw;
     font-family: "Encode Sans Semi Condensed", sans-serif;
     margin-left: 15px;
     
+}
+
+.comments-container input{
+  padding: 10px;
+  width: 50vh;
+  border-radius: 10px;
+  margin-bottom: 2%;
 }
 
 
@@ -238,6 +245,13 @@ body{
   .user-comment textarea{
     width: 60vw;
   }
+
+  .comments-container input {
+    padding: 10px;
+    width: 36vh;
+    border-radius: 10px;
+    margin-bottom: 2%;
+}
 
   @media (min-width: 1025px) {
     .top-single-item {

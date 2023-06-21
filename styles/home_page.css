@@ -5,7 +5,6 @@
   margin: 0;
   box-sizing: border-box; 
   font-family: "Encode Sans Semi Condensed", sans-serif;
-  overflow-x: hidden;
   text-decoration: none;
   color: black;
 
@@ -355,4 +354,23 @@ width: 80%;
 
 .diff-nav:hover{
   color: orange;
+}
+
+.poser-div{
+  visibility:hidden;
+  min-height:20vw;
+  }
+
+
+@media (max-width:500)  {
+  .poser-div{
+  visibility:hidden;
+  min-height:14vw;
+  }
+}
+@media (min-width:800)  {
+  .poser-div{
+  visibility:hidden;
+  min-height:10vw;
+  }
 }

@@ -246,7 +246,7 @@ body{
   
   @media (max-width: 722px) {
     .container {
-      padding-top: 40%;
+      padding-top: 2%;
       padding-bottom:8%;
     }
     .searchtxt{
@@ -296,6 +296,10 @@ body{
     } 
     .search-form{
       display: block;
+    }
+
+    .search-info{
+      margin-top: 15px;
     }
 }
 

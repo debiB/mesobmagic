@@ -8,7 +8,6 @@ signUpButton.addEventListener('click', () => {
 signInButton.addEventListener('click', () => {
 	container.classList.remove("right-panel-active");
 });
-// Function to validate the Email field in Sign In form
 
 function validEmail(){
 	var formData = new FormData();
@@ -16,7 +15,7 @@ function validEmail(){
 	formData.append('email', document.getElementById("email").value);
   
 	var xhr = new XMLHttpRequest();
-	var isEmailValid = true; // Flag to track email validity
+	var isEmailValid = true; 
   
 	xhr.open("POST", "filterUser.php", false);
   
@@ -25,7 +24,6 @@ function validEmail(){
 		if (xhr.status === 200) {
 		  console.log(xhr.responseText);
 		  if (xhr.responseText === "false") {
-			// document.getElementById('email-error').innerHTML = "Email is already in use.";
 			isEmailValid = false;
 		  }
 		} else {
@@ -76,7 +74,6 @@ function validateSignInPassword() {
 	}
 }
 
-// Function to perform overall validation for Sign In form
 
 var validLogin = function(email, password){
 	var formData = new FormData();
@@ -85,7 +82,7 @@ var validLogin = function(email, password){
 	formData.append('password', password);
   
 	var xhr = new XMLHttpRequest();
-	var isEmailValid = true; // Flag to track email validity
+	var isEmailValid = true; 
   
 	xhr.open("POST", "filterUser.php", false);
   
@@ -126,7 +123,7 @@ function validateSignInForm() {
 
 // Event listener for the Sign In form submission
 document.getElementById('signin-form').addEventListener('submit', function (event) {
-	event.preventDefault(); // Prevent form submission
+	event.preventDefault(); 
 
 	if (validateSignInForm()) {
 		// console.log("here")
@@ -137,7 +134,6 @@ document.getElementById('signin-form').addEventListener('submit', function (even
 });
 
 
-// Function to validate the First Name field
 function validateFirstName() {
 	const firstNameInput = document.getElementById('first-name');
 	const firstNameError = document.getElementById('first-name-error');
@@ -155,7 +151,6 @@ function validateFirstName() {
 	}
 }
 
-// Function to validate the Last Name field
 function validateLastName() {
 	const lastNameInput = document.getElementById('last-name');
 	const lastNameError = document.getElementById('last-name-error');
@@ -202,7 +197,6 @@ function checkEmailValidity() {
   }
   
   
-// Function to validate the Email field
 function validateEmail() {
 	
 	const emailInput = document.getElementById('email');
@@ -226,7 +220,6 @@ function validateEmail() {
 	}
 }
 
-// Function to validate the Password field
 function validatePassword() {
 	const passwordInput = document.getElementById('password');
 	const passwordError = document.getElementById('password-error');
@@ -244,7 +237,6 @@ function validatePassword() {
 	}
 }
 
-// Function to validate the Confirm Password field
 function validateConfirmPassword() {
 	const passwordInput = document.getElementById('password');
 	const confirmPasswordInput = document.getElementById('confirm-password');
@@ -263,7 +255,6 @@ function validateConfirmPassword() {
 	}
 }
 
-// Function to validate the Age field
 function validateAge() {
 	const ageInput = document.getElementById('age');
 	const ageError = document.getElementById('age-error');
@@ -278,7 +269,6 @@ function validateAge() {
 		return true;
 	}
 }
-// Function to validate the Job Title field
 function validateJobTitle() {
 	const jobTitleInput = document.getElementById('job-title');
 	const jobTitleError = document.getElementById('job-title-error');
@@ -295,7 +285,6 @@ function validateJobTitle() {
 		return true;
 	}
 }
-// Validate profile picture
 function validateProfilePicture() {
 	var photoInput = document.getElementById("profile_picture");
 	var photoError = document.getElementById("profile-picture-error");
@@ -304,9 +293,9 @@ function validateProfilePicture() {
 		photoError.textContent = "Photo is required";
 		return false;
 	} else {
-		var allowedFormats = ["jpg", "jpeg", "png"]; // Add more allowed formats if needed
+		var allowedFormats = ["jpg", "jpeg", "png"]; 
 		var file = photoInput.files[0];
-		var fileSize = file.size / (1024 * 1024); // File size in MB
+		var fileSize = file.size / (1024 * 1024);
 		var fileExtension = file.name.split(".").pop().toLowerCase();
 
 		if (!allowedFormats.includes(fileExtension)) {
@@ -316,14 +305,13 @@ function validateProfilePicture() {
 			photoError.textContent = "File size exceeds the limit of 2MB.";
 			return false;
 		} else {
-			photoError.textContent = ""; // Clear any previous error message
+			photoError.textContent = "";
 			return true;
 		}
 	}
 }
 
 
-// Function to validate the Country field in Sign Up form
 function validateCountry() {
 	const countrySelect = document.getElementById('lsup_country');
 	const countryError = document.getElementById('country-error');
@@ -347,7 +335,6 @@ function validateCountry() {
 	}
 }
 
-// Function to perform overall validation for Sign Up form
 function validateSignUpForm() {
 	const isValidFirstName = validateFirstName();
 	const isValidLastName = validateLastName();
@@ -380,7 +367,6 @@ function validateSignUpForm() {
 	}
 }
 
-// Event listener for the Sign Up form submission
 document.getElementById('signup-form').addEventListener('submit', function (event) {
 	event.preventDefault(); // Prevent form submission
 

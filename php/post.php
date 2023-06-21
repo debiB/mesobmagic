@@ -75,7 +75,6 @@
           <option value="italian">Italian</option>
           <option value="indian">Indian</option>
           <option value="chinese">Chinese</option>
-          <!-- Add more cuisine options as needed -->
         </select>
         <span class="error" id="cuisineError"></span>
       </div>

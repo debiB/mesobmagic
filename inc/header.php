@@ -18,15 +18,31 @@ rel="stylesheet">
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+
+<link rel="stylesheet" href="../styles/search.css"> 
+<link rel="stylesheet" href="../styles/single-item.css">
+<link rel="stylesheet" href="../styles/post.css">
+<link rel="stylesheet" href="../styles/profile.css">
+ <link rel="stylesheet" href="../styles/delete_rec.css">
+ <link rel="stylesheet" href="../styles/login.css">
+ <link rel="stylesheet" href="../styles/editProfile.css">
+ <link rel="stylesheet" href="../styles/about.css">
+<link rel="stylesheet" href = "../styles/footer.css">
 <link rel="stylesheet" href="../styles/header.css"> 
-    <link rel="stylesheet" href="../styles/search.css"> 
-    <link rel="stylesheet" href="../styles/single-item.css">
-    <link rel="stylesheet" href="../styles/post.css">
-    <link rel="stylesheet" href="../styles/profile.css">
-     <link rel="stylesheet" href="../styles/delete_rec.css">
-     <link rel="stylesheet" href="../styles/login.css">
-     
-    <link rel="stylesheet" href = "../styles/footer.css">
+<link rel="stylesheet" href="../styles/nav.css"> 
+<style>
+
+@import url('https://fonts.googleapis.com/css2?family=Encode+Sans+Semi+Condensed:wght@900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Encode+Sans+Semi+Condensed:wght@600;900&display=swap'); 
+
+*{
+  font-family: "Encode Sans Semi Condensed", sans-serif;
+  box-sizing: border-box;
+}
+
+
+</style>
    
 <title>MesobMagic</title>
     
@@ -36,7 +52,7 @@ rel="stylesheet">
 <header class="nav_header">
         <div class="nav_logo">
             <img src="../mesobmagic22v2.gif">
-            <p class="header_txt">MESOB MAGIC</p>
+            <p class="header_txt"><a href = "../php/home_page.php" style="text-decoration: none; color:black;" >MESOB MAGIC</a></p>
         </div>
         <nav class="nav_wrapper">
             <ul class ="nav_menu">
@@ -76,3 +92,4 @@ rel="stylesheet">
         }
     }
 </script>
+<!-- <div style="visibility:hidden; min-height:4em;"></div> -->

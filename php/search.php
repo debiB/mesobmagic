@@ -6,7 +6,8 @@ session_start();
 // print_r($_SESSION);
 // include "/opt/lampp/htdocs/mesobmagic/php/sessionStarter.php";
 ?>
-<div style="visibility:hidden; min-height:9em;"></div>
+<div style="visibility:hidden; min-height:14em;"></div>
+
 <div class="container">
   <label for="search" class="searchtxt">Search</label>
   <form action="<?php echo $_SERVER["PHP_SELF"];?>" method="get" id  = "cont" class="search-form">

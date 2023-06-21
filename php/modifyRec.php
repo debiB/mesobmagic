@@ -35,7 +35,7 @@ if (!isset($_POST['name'])):?>
       </p>
       <div class="stars" style="display:block">
           <?php
-          $avg_rating = $post['rating'];
+          $avg_rating = $post['avg'];
           if ($avg_rating == null) $avg_rating = 0;
           $i = 0;
           while ($i < 5) {
@@ -103,7 +103,7 @@ if (!isset($_POST['name'])):?>
       </p>
       <div class="stars" style="display:block">
           <?php
-          $avg_rating = $post['rating'];
+          $avg_rating = $post['avg'];
           if ($avg_rating == null) $avg_rating = 0;
           $i = 0;
           while ($i < 5) {
